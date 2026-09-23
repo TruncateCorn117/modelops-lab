@@ -4,6 +4,15 @@ from fastapi.responses import JSONResponse
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
 
+def route_path(scope: Scope) -> str:
+    """Handle both prefix-stripping proxies and ASGI servers retaining root_path."""
+    path = scope["path"]
+    root = scope.get("root_path", "").rstrip("/")
+    if root and (path == root or path.startswith(root + "/")):
+        return path[len(root) :] or "/"
+    return path
+
+
 class BodySizeLimitMiddleware:
     def __init__(self, app: ASGIApp, max_bytes: int = 12 * 1024 * 1024):
         self.app, self.max_bytes = app, max_bytes
@@ -12,7 +21,7 @@ class BodySizeLimitMiddleware:
         if (
             scope["type"] != "http"
             or scope["method"] not in {"POST", "PUT", "PATCH"}
-            or not scope["path"].startswith("/api/")
+            or not route_path(scope).startswith("/api/")
         ):
             return await self.app(scope, receive, send)
         body = bytearray()

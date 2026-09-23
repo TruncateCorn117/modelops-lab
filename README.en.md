@@ -1,5 +1,9 @@
 # ModelOps Lab
 
+[Live demo](https://blackfieldinteractive.com/modelops/) · [Public deployment guide](docs/PUBLIC_DEMO.md)
+
+The public demo provides transient ticket inference with deterministic demo models, synthetic datasets, and precomputed reports. Visitor input is not stored; management actions are disabled. Deploy locally for the complete platform.
+
 **A model serving and evaluation workbench for manufacturing tickets.** Register model endpoints, extract structured fields, classify issues, compare batch results, and trace individual requests.
 
 [中文](README.md) · [Deployment](docs/DEPLOYMENT.md) · [Evaluation methodology](docs/EVALUATION.md) · [Data card](docs/DATA_CARD.md) · [API guide](docs/API.md) · [Validation notes](docs/VALIDATION.md) · [Contributing](CONTRIBUTING.md)

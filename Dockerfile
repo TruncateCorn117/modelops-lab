@@ -5,6 +5,8 @@ RUN corepack enable && corepack prepare pnpm@10.17.1 --activate
 COPY frontend/package.json frontend/pnpm-lock.yaml frontend/pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY frontend/ ./
+ARG VITE_BASE_PATH=/
+ENV VITE_BASE_PATH=${VITE_BASE_PATH}
 RUN pnpm build
 
 FROM python:3.12-slim AS runtime
@@ -20,6 +22,7 @@ RUN pip install --no-cache-dir -r requirements.lock.txt \
     && useradd --uid 10001 --gid modelops --create-home modelops
 COPY backend/modelops/ ./backend/modelops/
 COPY data/ ./data/
+COPY scripts/ ./scripts/
 COPY --from=frontend-build /web/dist ./frontend/dist
 RUN mkdir -p /app/runtime && chown modelops:modelops /app/runtime
 USER modelops

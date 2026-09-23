@@ -1,6 +1,6 @@
 # Security and data handling
 
-ModelOps Lab v0.1 is intended for a local workstation or a trusted evaluation environment. It is not a hardened, multi-tenant production service.
+The complete ModelOps Lab workspace is intended for a local workstation or a trusted evaluation environment. It is not a hardened, multi-tenant production service. Version 0.2 adds a separate, restricted public demo profile.
 
 ## Reporting a vulnerability
 
@@ -24,11 +24,17 @@ This allowlist is a configuration guard, not complete SSRF protection or a netwo
 
 ## Stored data
 
-The SQLite database stores model configurations, datasets and expected answers, experiment snapshots, request text, parsed output, timing, and errors. Application diagnostic logs omit request bodies and secrets. Raw provider response text is not additionally persisted.
+In the complete workspace, the SQLite database stores model configurations, datasets and expected answers, experiment snapshots, request text, parsed output, timing, and errors. Application diagnostic logs omit request bodies and secrets. Raw provider response text is not additionally persisted.
 
-**There is no automatic redaction, encryption at rest, retention expiry, or record deletion interface in v0.1.** Protect the runtime directory or Docker volume, restrict backups, and define a retention policy before importing private records. A stopped local demo can be reset by removing its runtime database/volume, which also removes all imported data and experiment history. Back up/export first if records must be kept.
+**There is no automatic redaction, encryption at rest, retention expiry, or record deletion interface.** Protect the runtime directory or Docker volume, restrict backups, and define a retention policy before importing private records. A stopped local demo can be reset by removing its runtime database/volume, which also removes all imported data and experiment history. Back up/export first if records must be kept.
 
 The repository's bundled data is entirely synthetic. Do not contribute internal customer data, production credentials, personal information, or proprietary documents. Use authorized and appropriately anonymized samples for private evaluation.
+
+## Public demo profile
+
+`MODEL_OPS_PUBLIC_DEMO=true` rejects configuration changes, imports, and experiment mutations even when a platform key is supplied. Interactive inference is restricted to the built-in deterministic demo models; submitted text and output are returned to the visitor without database persistence. Diagnostic request IDs, status, latency, aggregate counters, and normal proxy access logs remain available.
+
+Use a dedicated database. Startup rejects non-bundled model/data configuration, free-text request history, and unapproved evaluation records. Offline-prepared reports must contain bundled synthetic samples and verified demo outputs. The supplied Linux public Compose profile uses a separate data volume, no published host ports, read-only filesystem, resource limits, and an isolated network without outbound access. Host Nginx reaches the container by its internal bridge address and adds rate and connection limits. See [public deployment](docs/PUBLIC_DEMO.md).
 
 ## Operational limits
 

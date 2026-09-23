@@ -6608,3 +6608,55 @@ tbody .text-link,
     grid-column: 1 / -1;
   }
 }
+
+.public-demo-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  margin-bottom: 24px;
+  border: 1px solid #c4e1d9;
+  border-radius: 10px;
+  background: #edf7f3;
+  color: #1b574d;
+}
+.public-demo-banner > svg {
+  flex-shrink: 0;
+}
+.public-demo-banner > div {
+  flex: 1;
+  min-width: 0;
+}
+.public-demo-banner strong,
+.public-demo-banner span {
+  display: block;
+}
+.public-demo-banner strong {
+  font-size: 14px;
+}
+.public-demo-banner span {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.public-demo-banner > a {
+  flex-shrink: 0;
+  font-size: 13px;
+}
+.icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+@media (max-width: 640px) {
+  .public-demo-banner {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 13px;
+    gap: 8px;
+  }
+  .public-demo-banner > div {
+    flex-basis: calc(100% - 30px);
+  }
+  .public-demo-banner > a {
+    margin-left: 27px;
+  }
+}

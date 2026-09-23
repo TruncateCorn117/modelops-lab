@@ -17,6 +17,7 @@ import {
   Timer,
 } from "lucide-react";
 import { download, post, refreshData, useApi } from "../api";
+import { LocalDeploymentNotice, usePublicDemo } from "../publicDemo";
 import type {
   Dataset,
   Model,
@@ -58,6 +59,7 @@ function selectedRunId() {
   return window.location.hash.split("/")[1] || "";
 }
 export default function Evaluations() {
+  const publicDemo = usePublicDemo();
   const query = useApi<Run[]>("/api/runs", 3000);
   const [creating, setCreating] = useState(false);
   const [selected, setSelected] = useState(selectedRunId);
@@ -89,11 +91,14 @@ export default function Evaluations() {
                 variant="primary"
                 icon={<Plus size={17} />}
                 onClick={() => setCreating(true)}
+                disabled={publicDemo}
+                title={publicDemo ? "请本地部署完整版本" : undefined}
               >
                 新建评测
               </Button>
             }
           />
+          <LocalDeploymentNotice />
           <div className="evaluation-intro">
             <div className="eval-intro-icon">
               <FlaskConical size={26} />
@@ -168,6 +173,7 @@ export default function Evaluations() {
                       variant="primary"
                       icon={<Play size={15} />}
                       onClick={() => setCreating(true)}
+                      disabled={publicDemo}
                     >
                       创建首次评测
                     </Button>
@@ -259,7 +265,7 @@ export default function Evaluations() {
           </Card>
         </>
       )}
-      {creating && (
+      {creating && !publicDemo && (
         <CreateRun
           onClose={() => setCreating(false)}
           onCreated={(run) => {
@@ -470,6 +476,7 @@ function CreateRun({
   );
 }
 function RunDetail({ id }: { id: string }) {
+  const publicDemo = usePublicDemo();
   const query = useApi<Run>(`/api/runs/${encodeURIComponent(id)}`, 2500);
   const run = query.data;
   const resultsQuery = useApi<RunResult[]>(
@@ -519,6 +526,7 @@ function RunDetail({ id }: { id: string }) {
     }
   }
   async function cancel() {
+    if (publicDemo) return;
     setCancelBusy(true);
     try {
       await post(`/api/runs/${encodeURIComponent(id)}/cancel`);
@@ -550,6 +558,8 @@ function RunDetail({ id }: { id: string }) {
                   <Button
                     variant="danger"
                     onClick={cancel}
+                    disabled={publicDemo}
+                    title={publicDemo ? "请本地部署完整版本" : undefined}
                     busy={cancelBusy}
                     icon={<Square size={14} />}
                   >

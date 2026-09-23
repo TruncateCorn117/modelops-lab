@@ -2,9 +2,11 @@
 
 **面向制造业工单处理的模型服务与评测平台。** 将模型登记、工单字段提取、四类故障分类、批量评测和请求追踪放在同一个工作台中。
 
-[English](README.en.md) · [部署与模型接入](docs/DEPLOYMENT.md) · [评测方法](docs/EVALUATION.md) · [数据卡](docs/DATA_CARD.md) · [API 指南](docs/API.md) · [验证记录](docs/VALIDATION.md) · [贡献指南](CONTRIBUTING.md)
+[在线演示](https://blackfieldinteractive.com/modelops/) · [English](README.en.md) · [部署与模型接入](docs/DEPLOYMENT.md) · [评测方法](docs/EVALUATION.md) · [数据卡](docs/DATA_CARD.md) · [API 指南](docs/API.md) · [验证记录](docs/VALIDATION.md) · [贡献指南](CONTRIBUTING.md)
 
 这是个人独立实现的开源工程项目。仓库只包含自行设计的合成工单，不包含企业内部代码、工单、服务地址或客户材料。默认演示模型是**确定性的规则程序**；演示指标用于验证系统流程，不代表任何大模型的真实能力。
+
+在线演示提供工单体验、160 条合成数据和预生成对比报告；访客输入不写入数据库，管理与批量运行入口受限。完整功能可按下文在本地部署。自有网站可按[公开演示部署指南](docs/PUBLIC_DEMO.md)挂载到子目录。
 
 ## 第一版可以做什么
 

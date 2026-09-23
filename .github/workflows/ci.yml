@@ -50,3 +50,8 @@ jobs:
       - name: Typecheck and build
         working-directory: frontend
         run: pnpm build
+      - name: Build with a public subpath
+        working-directory: frontend
+        env:
+          VITE_BASE_PATH: /modelops/
+        run: pnpm build

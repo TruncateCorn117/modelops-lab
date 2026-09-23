@@ -11,6 +11,8 @@
 | `MODEL_OPS_API_KEY` | 空 | 平台访问密钥；非空时 API 与 `/metrics` 需要 Bearer 鉴权 |
 | `MODEL_OPS_ALLOWED_HOSTS` | `localhost,127.0.0.1,::1,host.docker.internal` | 允许访问的上游主机名，逗号分隔；设置后替换默认列表 |
 | `MODEL_PROVIDER_API_KEY` | 空 | Compose 预留的上游密钥变量；在模型配置中填写这个变量名 |
+| `MODEL_OPS_PUBLIC_DEMO` | `false` | 公开演示模式，仅开放临时规则推理及预置数据读取 |
+| `MODEL_OPS_ROOT_PATH` | 空 | 反向代理子目录前缀，例如 `/modelops` |
 
 `MODEL_OPS_API_KEY` 是访问本平台的密钥，`MODEL_PROVIDER_API_KEY` 是平台调用模型服务的密钥，两者独立。通过 API/UI 保存的是上游变量名 `api_key_env`，不保存实际密钥。变量新增或变更后重启后端/重建容器使其生效。
 
@@ -94,5 +96,7 @@ uvicorn modelops.main:app --host 127.0.0.1 --port 8000 --workers 1
 | CPU 图不是模型资源 | 面板只采 API 进程，需要另行接入模型服务器/GPU 监控 |
 
 ## 对外部署边界
+
+在个人网站展示时，建议使用[公开演示部署方案](PUBLIC_DEMO.md)：专用数据卷、预置合成报告、输入不落库及只读管理接口。该模式不会通过填写 API 密钥变成完整工作区。
 
 默认 Compose 仅绑定本机。向团队开放时，应由部署方配置 HTTPS 反向代理、访问控制、可信上游及数据保留政策。内置单一访问密钥不区分用户权限，也没有多租户隔离、密码恢复或审计合规功能。参见 [SECURITY.md](../SECURITY.md)。

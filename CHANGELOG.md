@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 — 2026-09-23
+
+- Added an optional public demo with transient inference, locked management actions, and validation of public-only stored data.
+- Added configurable subpath hosting for frontend assets, API requests, and API documentation.
+- Added a restricted deployment profile, Nginx configuration, and an offline synthetic report preparation script.
+- Preserved the full local platform workflow when public demo mode is disabled.
+
 ## 0.1.0 — 2026-09-23
 
 First public release of the manufacturing ticket serving and evaluation workbench.

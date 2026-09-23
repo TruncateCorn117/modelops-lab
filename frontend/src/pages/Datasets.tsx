@@ -27,6 +27,7 @@ import {
 } from "../ui";
 import { date, errorMessage, number } from "../utils";
 import { OutputFields } from "./Playground";
+import { LocalDeploymentNotice, usePublicDemo } from "../publicDemo";
 
 const importExample = {
   name: "自定义工单测试集",
@@ -52,6 +53,7 @@ const importExample = {
   ],
 };
 export default function Datasets() {
+  const publicDemo = usePublicDemo();
   const query = useApi<Dataset[]>("/api/datasets");
   const [importing, setImporting] = useState(false);
   const [selected, setSelected] = useState<Dataset | null>(null);
@@ -88,11 +90,14 @@ export default function Datasets() {
             variant="primary"
             icon={<Upload size={16} />}
             onClick={() => setImporting(true)}
+            disabled={publicDemo}
+            title={publicDemo ? "请本地部署完整版本" : undefined}
           >
             导入数据集
           </Button>
         }
       />
+      <LocalDeploymentNotice />
       <div className="dataset-summary">
         <div>
           <Database size={22} />
@@ -163,6 +168,7 @@ export default function Datasets() {
                   variant="primary"
                   icon={<Upload size={15} />}
                   onClick={() => setImporting(true)}
+                  disabled={publicDemo}
                 >
                   导入数据集
                 </Button>
@@ -235,7 +241,7 @@ export default function Datasets() {
           <p>每次评测记录内容指纹，让对比结果能够复现。</p>
         </div>
       </div>
-      {importing && (
+      {importing && !publicDemo && (
         <ImportDataset
           onClose={() => setImporting(false)}
           onImported={(dataset) => {

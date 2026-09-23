@@ -16,9 +16,10 @@ from fastapi.staticfiles import StaticFiles
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+from . import __version__
 from .config import Settings
 from .evaluation import report_markdown
-from .middleware import BodySizeLimitMiddleware
+from .middleware import BodySizeLimitMiddleware, route_path
 from .schemas import DatasetInput, InferInput, ModelInput, RunInput
 from .service import Service, dataset_public, now, request_public, uid
 
@@ -37,9 +38,10 @@ def create_app(settings: Settings | None = None):
 
     application = FastAPI(
         title="ModelOps Lab",
-        version="0.1.0",
+        version=__version__,
         description="Manufacturing ticket model serving and evaluation. All bundled data is synthetic.",
         lifespan=lifespan,
+        root_path=config.root_path,
     )
 
     application.add_middleware(BodySizeLimitMiddleware)
@@ -52,8 +54,20 @@ def create_app(settings: Settings | None = None):
     @application.middleware("http")
     async def access_policy(request: Request, call_next):
         request.state.request_id = uid("req")
-        path = request.url.path
+        path = route_path(request.scope)
         protected = (path.startswith("/api/") and path != "/api/health") or path == "/metrics"
+        if (
+            config.public_demo
+            and protected
+            and request.method not in {"GET", "HEAD", "OPTIONS"}
+            and not (request.method == "POST" and path == "/api/infer")
+        ):
+            return error_response(
+                "public_demo_read_only",
+                "Public demo configuration and evaluation history are read-only",
+                403,
+                request.state.request_id,
+            )
         if protected and config.api_key:
             supplied = request.headers.get("authorization", "")
             if not hmac.compare_digest(
@@ -64,7 +78,11 @@ def create_app(settings: Settings | None = None):
                 )
         if protected and request.method not in {"GET", "HEAD", "OPTIONS"}:
             origin = request.headers.get("origin")
-            trusted = {str(request.base_url).rstrip("/"), "http://localhost:5173", "http://127.0.0.1:5173"}
+            trusted = {
+                f"{request.url.scheme}://{request.url.netloc}",
+                "http://localhost:5173",
+                "http://127.0.0.1:5173",
+            }
             if origin and origin not in trusted:
                 return error_response(
                     "origin_rejected", "Cross-origin mutations are not allowed", 403, request.state.request_id
@@ -129,7 +147,12 @@ def create_app(settings: Settings | None = None):
 
     @application.get("/api/health")
     async def health():
-        return {"status": "ok", "version": "0.1.0", "auth_required": bool(config.api_key)}
+        return {
+            "status": "ok",
+            "version": __version__,
+            "auth_required": bool(config.api_key),
+            "public_demo": config.public_demo,
+        }
 
     @application.get("/api/models")
     async def list_models():
@@ -190,6 +213,13 @@ def create_app(settings: Settings | None = None):
             model = require("models", model_id)
         if not model["enabled"]:
             raise HTTPException(409, "Model is disabled")
+        if config.public_demo and (
+            model["provider"] != "demo" or model.get("fault_mode", "none") not in {"none", "noisy"}
+        ):
+            raise HTTPException(
+                403,
+                {"code": "public_demo_provider", "message": "Public demo supports only bundled demo models"},
+            )
         if svc().inflight.locked():
             raise HTTPException(
                 429,
@@ -198,7 +228,9 @@ def create_app(settings: Settings | None = None):
                     "message": "All inference slots are busy. Try again after current requests complete",
                 },
             )
-        result = await svc().invoke(model, data.text, request_id=request.state.request_id)
+        result = await svc().invoke(
+            model, data.text, request_id=request.state.request_id, persist=not config.public_demo
+        )
         if result["status"] != "success":
             status = {"timeout": 504, "configuration_error": 400, "connection_error": 503}.get(
                 result["error_code"], 502
@@ -359,7 +391,7 @@ def create_app(settings: Settings | None = None):
             {
                 "name": "ModelOps Lab",
                 "message": "API ready. Start the frontend dev server or build frontend/dist.",
-                "docs": "/docs",
+                "docs": f"{config.root_path}/docs",
             }
         )
 
@@ -378,6 +410,7 @@ def create_app(settings: Settings | None = None):
             version=application.version,
             description=application.description,
             routes=application.routes,
+            servers=application.servers,
         )
         schema.setdefault("components", {}).setdefault("securitySchemes", {})["AccessKey"] = {
             "type": "http",

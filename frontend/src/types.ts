@@ -180,4 +180,5 @@ export interface Health {
   status: string;
   version: string;
   auth_required: boolean;
+  public_demo: boolean;
 }

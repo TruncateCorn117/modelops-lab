@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const TOKEN_KEY = "modelops_api_token";
+export function appPath(path: string) {
+  return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+}
 export function getToken() {
   return sessionStorage.getItem(TOKEN_KEY) || "";
 }
@@ -28,7 +31,7 @@ async function fetchResponse(path: string, options: RequestInit = {}) {
   if (token) headers.set("Authorization", `Bearer ${token}`);
   let response: Response;
   try {
-    response = await fetch(path, { ...options, headers });
+    response = await fetch(appPath(path), { ...options, headers });
   } catch (error) {
     if (error instanceof DOMException && error.name === "AbortError")
       throw error;

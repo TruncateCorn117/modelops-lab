@@ -15,6 +15,7 @@ from prometheus_client import CollectorRegistry, Gauge, Histogram
 from prometheus_client import Counter as MetricCounter
 
 from . import adapters
+from .config import ROOT
 from .db import Database
 from .evaluation import score_output, summarize_results
 from .schemas import DatasetInput, ModelInput
@@ -37,6 +38,24 @@ def request_public(row):
 
 def dataset_public(row):
     return {k: v for k, v in row.items() if k != "rows"}
+
+
+def demo_models():
+    for key, name, fault in [
+        ("demo-baseline", "规则基线 · 演示", "none"),
+        ("demo-noisy", "扰动基线 · 演示", "noisy"),
+    ]:
+        yield (
+            key,
+            ModelInput(
+                name=name,
+                provider="demo",
+                model_name="rule-baseline",
+                version="1.0",
+                timeout_seconds=2,
+                fault_mode=fault,
+            ).model_dump(),
+        )
 
 
 class Service:
@@ -87,18 +106,7 @@ class Service:
         if not self.settings.seed:
             return
         if not self.db.all("models"):
-            for key, name, fault in [
-                ("demo-baseline", "规则基线 · 演示", "none"),
-                ("demo-noisy", "扰动基线 · 演示", "noisy"),
-            ]:
-                model = ModelInput(
-                    name=name,
-                    provider="demo",
-                    model_name="rule-baseline",
-                    version="1.0",
-                    timeout_seconds=2,
-                    fault_mode=fault,
-                ).model_dump()
+            for key, model in demo_models():
                 model.update(
                     id=key,
                     is_default=key == "demo-baseline",
@@ -125,8 +133,62 @@ class Service:
         return self.db.put("datasets", value)
 
     async def start(self):
+        if self.settings.public_demo:
+            await self.validate_public_demo()
         self.seed()
+        if self.settings.public_demo:
+            await self.validate_public_demo()
         self.background = [asyncio.create_task(self.health_loop()), asyncio.create_task(self.resource_loop())]
+
+    async def validate_public_demo(self):
+        """Fail closed when a private workspace is accidentally used for the public demo.
+
+        Historical runs must be explicitly approved by an offline publisher, contain only
+        bundled samples, and use the deterministic demo adapters. No public HTTP endpoint
+        can create or approve history.
+        """
+
+        def require(condition):
+            if not condition:
+                raise ValueError(
+                    "Public demo database contains unapproved data. Use a fresh, dedicated demo database "
+                    "with bundled models/data and explicitly approved synthetic evaluation history."
+                )
+
+        models = dict(demo_models())
+
+        def valid_model(model):
+            expected = models.get(model.get("id"))
+            return expected is not None and all(model.get(k) == v for k, v in expected.items())
+
+        require(all(valid_model(model) for model in self.db.all("models")))
+        bundled = DatasetInput.model_validate(
+            json.loads((ROOT / "data" / "manufacturing_tickets.json").read_text())
+        ).model_dump()
+        serialized = json.dumps(bundled["rows"], ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+        digest = hashlib.sha256(serialized.encode()).hexdigest()
+        for dataset in self.db.all("datasets"):
+            require(dataset.get("id") == "manufacturing-v1")
+            require(all(dataset.get(k) == v for k, v in bundled.items()))
+            require(dataset.get("sha256") == digest)
+        samples = {row["id"]: row for row in bundled["rows"]}
+        runs = {run["id"]: run for run in self.db.all("runs")}
+        for run in runs.values():
+            require(run.get("public_demo") is True and run.get("status") == "completed")
+            require(run.get("dataset_id") == "manufacturing-v1" and run.get("dataset_sha256") == digest)
+            require(bool(run.get("sample_ids")) and set(run["sample_ids"]) <= samples.keys())
+            require(bool(run.get("model_ids")) and set(run["model_ids"]) <= models.keys())
+            require(bool(run.get("model_snapshots")) and all(valid_model(m) for m in run["model_snapshots"]))
+        for row in self.db.all("requests"):
+            run = runs.get(row.get("run_id"))
+            sample = samples.get(row.get("sample_id"))
+            require(run is not None and sample is not None)
+            require(row.get("sample_id") in run["sample_ids"] and row.get("model_id") in run["model_ids"])
+            require(row.get("text") == sample["text"] and row.get("expected") == sample["expected"])
+            require(row.get("provider") == "demo" and row.get("is_simulated") is True)
+            require(row.get("status") == "success" and "raw_response" not in row)
+            expected = await adapters.infer(models[row["model_id"]], sample["text"])
+            require(row.get("output") == expected["output"])
 
     async def close(self):
         tasks = list(self.tasks.values()) + self.background
@@ -170,7 +232,9 @@ class Service:
             self.db.put("models", current)
         return current
 
-    async def invoke(self, model, text, *, run_id=None, expected=None, sample_id=None, request_id=None):
+    async def invoke(
+        self, model, text, *, run_id=None, expected=None, sample_id=None, request_id=None, persist=True
+    ):
         identifier = request_id or uid("req")
         started = time.perf_counter()
         row = {
@@ -220,7 +284,8 @@ class Service:
         row["latency_ms"] = round((time.perf_counter() - started) * 1000, 3)
         if expected is not None:
             row["score"] = score_output(expected, row["output"] if row["status"] == "success" else None)
-        self.db.put("requests", row)
+        if persist:
+            self.db.put("requests", row)
         self.calls.labels(provider=model["provider"], status=row["status"]).inc()
         self.latency.labels(provider=model["provider"]).observe(row["latency_ms"] / 1000)
         logger.info(

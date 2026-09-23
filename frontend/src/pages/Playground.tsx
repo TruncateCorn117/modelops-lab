@@ -11,6 +11,7 @@ import {
   Timer,
 } from "lucide-react";
 import { ApiError, post, refreshData, useApi } from "../api";
+import { usePublicDemo } from "../publicDemo";
 import type { Inference, Model, TicketOutput } from "../types";
 import {
   Button,
@@ -40,6 +41,7 @@ const examples = [
   "2025-02-14，装配产线的工控机（设备编号：IPC-008）出现 APP-502 报错。故障现象：控制软件无法加载配方。处理措施：重启应用并恢复配置。停机12分钟。",
 ];
 export default function Playground() {
+  const publicDemo = usePublicDemo();
   const models = useApi<Model[]>("/api/models");
   const [modelId, setModelId] = useState("");
   const [text, setText] = useState(examples[0]);
@@ -50,18 +52,17 @@ export default function Playground() {
   const [view, setView] = useState<"fields" | "json">("fields");
   const [elapsed, setElapsed] = useState(0);
   const notify = useToast();
-  const available = (models.data || []).filter((model) => model.enabled);
+  const available = (models.data || []).filter(
+    (model) => model.enabled && (!publicDemo || model.provider === "demo"),
+  );
   useEffect(() => {
-    if (
-      models.data &&
-      !models.data.some((model) => model.id === modelId && model.enabled)
-    )
+    if (models.data && !available.some((model) => model.id === modelId))
       setModelId(
-        models.data.find((model) => model.is_default && model.enabled)?.id ||
-          models.data.find((model) => model.enabled)?.id ||
+        available.find((model) => model.is_default)?.id ||
+          available[0]?.id ||
           "",
       );
-  }, [models.data, modelId]);
+  }, [models.data, modelId, publicDemo]);
   const model = models.data?.find((item) => item.id === modelId);
   useEffect(() => {
     if (!running) return;
@@ -110,7 +111,8 @@ export default function Playground() {
         description="输入一条工单，查看模型如何提取关键信息并判断故障类别。"
         actions={
           <a className="button button-secondary" href="#evaluations">
-            前往批量评测 <ArrowUpRight size={15} />
+            {publicDemo ? "查看评测报告" : "前往批量评测"}{" "}
+            <ArrowUpRight size={15} />
           </a>
         }
       />
@@ -190,11 +192,19 @@ export default function Playground() {
               maxLength={8000}
               value={text}
               onChange={(event) => setText(event.target.value)}
-              placeholder="粘贴工单文本，例如设备异常、报警信息、处理措施和停机时长…"
+              placeholder={
+                publicDemo
+                  ? "仅输入合成测试文本，请勿包含企业工单或个人信息…"
+                  : "粘贴工单文本，例如设备异常、报警信息、处理措施和停机时长…"
+              }
               disabled={running}
             />
             <div className="input-footnote">
-              <span>示例为人工构造的合成工单</span>
+              <span>
+                {publicDemo
+                  ? "仅测试合成示例，请勿输入企业私有数据"
+                  : "示例为人工构造的合成工单"}
+              </span>
               <span>{text.length.toLocaleString()} / 8,000</span>
             </div>
             {model?.provider === "demo" && (
@@ -213,7 +223,9 @@ export default function Playground() {
               {running ? `正在处理 · ${elapsed.toFixed(1)}s` : "运行工单分析"}
             </Button>
             <p className="privacy-caption">
-              工单原文与结果会写入本地请求日志，便于追踪和复测。
+              {publicDemo
+                ? "公开演示的输入与结果不写入请求日志，仅用于本次处理。"
+                : "工单原文与结果会写入本地请求日志，便于追踪和复测。"}
             </p>
           </div>
         </Card>
@@ -236,17 +248,23 @@ export default function Playground() {
           ) : error ? (
             <div className="output-error">
               <ErrorState error={error} />
-              <p>失败请求也会记录在日志中，可以根据请求编号查看原因。</p>
-              <a
-                className="text-link"
-                href={
-                  error instanceof ApiError && error.requestId
-                    ? `#requests/${error.requestId}`
-                    : "#requests"
-                }
-              >
-                查看请求日志 <ArrowUpRight size={15} />
-              </a>
+              <p>
+                {publicDemo
+                  ? "演示请求不会保存，可调整合成示例后重试。"
+                  : "失败请求也会记录在日志中，可以根据请求编号查看原因。"}
+              </p>
+              {!publicDemo && (
+                <a
+                  className="text-link"
+                  href={
+                    error instanceof ApiError && error.requestId
+                      ? `#requests/${error.requestId}`
+                      : "#requests"
+                  }
+                >
+                  查看请求日志 <ArrowUpRight size={15} />
+                </a>
+              )}
             </div>
           ) : result ? (
             <>
@@ -297,9 +315,16 @@ export default function Playground() {
               <div className="inference-result-footer">
                 <div>
                   <span>请求编号</span>
-                  <a className="mono text-link" href={`#requests/${result.id}`}>
-                    {result.id.slice(0, 16)} <ArrowUpRight size={13} />
-                  </a>
+                  {publicDemo ? (
+                    <strong className="mono">{result.id.slice(0, 16)}</strong>
+                  ) : (
+                    <a
+                      className="mono text-link"
+                      href={`#requests/${result.id}`}
+                    >
+                      {result.id.slice(0, 16)} <ArrowUpRight size={13} />
+                    </a>
+                  )}
                 </div>
                 <div>
                   <span>Tokens（输入 / 输出）</span>
@@ -332,7 +357,7 @@ export default function Playground() {
           <p>用固定测试集比较字段准确率、分类表现与延迟，导出可复现报告。</p>
         </div>
         <a className="text-link" href="#evaluations">
-          创建评测 <ArrowUpRight size={15} />
+          {publicDemo ? "查看评测报告" : "创建评测"} <ArrowUpRight size={15} />
         </a>
       </div>
     </>

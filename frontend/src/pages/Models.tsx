@@ -32,6 +32,7 @@ import {
   useToast,
 } from "../ui";
 import { date, errorMessage } from "../utils";
+import { LocalDeploymentNotice, usePublicDemo } from "../publicDemo";
 
 const providers: Record<Provider, string> = {
   demo: "规则模拟服务",
@@ -52,6 +53,7 @@ const defaultForm: ModelInput = {
   enabled: true,
 };
 export default function Models() {
+  const publicDemo = usePublicDemo();
   const query = useApi<Model[]>("/api/models");
   const [editing, setEditing] = useState<Model | "new" | null>(null);
   const [deleting, setDeleting] = useState<Model | null>(null);
@@ -68,6 +70,7 @@ export default function Models() {
       (filter === "all" || model.provider === filter),
   );
   async function action(model: Model, operation: "health" | "default") {
+    if (publicDemo) return;
     setBusy(`${model.id}:${operation}`);
     try {
       const result = await post<Model>(
@@ -89,7 +92,7 @@ export default function Models() {
     }
   }
   async function remove() {
-    if (!deleting) return;
+    if (!deleting || publicDemo) return;
     setBusy(`${deleting.id}:delete`);
     try {
       await api(`/api/models/${encodeURIComponent(deleting.id)}`, {
@@ -115,11 +118,14 @@ export default function Models() {
             variant="primary"
             icon={<Plus size={17} />}
             onClick={() => setEditing("new")}
+            disabled={publicDemo}
+            title={publicDemo ? "请本地部署完整版本" : undefined}
           >
             接入模型
           </Button>
         }
       />
+      <LocalDeploymentNotice />
       <div className="mini-stats-grid">
         <Card className="mini-stat">
           <span className="stat-symbol">
@@ -202,6 +208,7 @@ export default function Models() {
                 <Button
                   variant="primary"
                   onClick={() => setEditing("new")}
+                  disabled={publicDemo}
                   icon={<Plus size={15} />}
                 >
                   接入模型
@@ -263,26 +270,37 @@ export default function Models() {
                     icon={<Radio size={14} />}
                     onClick={() => action(model, "health")}
                     busy={busy === `${model.id}:health`}
-                    disabled={Boolean(busy)}
+                    disabled={publicDemo || Boolean(busy)}
+                    title={publicDemo ? "请本地部署完整版本" : undefined}
                   >
                     检查
                   </Button>
                   <div className="model-icon-actions">
                     <button
                       className="icon-button"
-                      title="编辑模型"
+                      title={publicDemo ? "请本地部署完整版本" : "编辑模型"}
                       aria-label={`编辑 ${model.name}`}
                       onClick={() => setEditing(model)}
+                      disabled={publicDemo}
                     >
                       <Pencil size={16} />
                     </button>
                     <button
                       className={`icon-button ${model.is_default ? "is-default" : ""}`}
-                      title={model.is_default ? "当前默认模型" : "设为默认模型"}
+                      title={
+                        publicDemo
+                          ? "请本地部署完整版本"
+                          : model.is_default
+                            ? "当前默认模型"
+                            : "设为默认模型"
+                      }
                       aria-label={`将 ${model.name} 设为默认模型`}
                       onClick={() => action(model, "default")}
                       disabled={
-                        model.is_default || !model.enabled || Boolean(busy)
+                        publicDemo ||
+                        model.is_default ||
+                        !model.enabled ||
+                        Boolean(busy)
                       }
                     >
                       <Star
@@ -292,10 +310,10 @@ export default function Models() {
                     </button>
                     <button
                       className="icon-button danger-hover"
-                      title="删除模型"
+                      title={publicDemo ? "请本地部署完整版本" : "删除模型"}
                       aria-label={`删除 ${model.name}`}
                       onClick={() => setDeleting(model)}
-                      disabled={Boolean(busy)}
+                      disabled={publicDemo || Boolean(busy)}
                     >
                       <Trash2 size={16} />
                     </button>
@@ -323,13 +341,13 @@ export default function Models() {
           打开工单体验台 <ArrowUpRight size={15} />
         </a>
       </div>
-      {editing && (
+      {editing && !publicDemo && (
         <ModelForm
           model={editing === "new" ? undefined : editing}
           onClose={() => setEditing(null)}
         />
       )}
-      {deleting && (
+      {deleting && !publicDemo && (
         <Modal
           title="删除模型配置"
           description="此操作会移除模型目录中的这条配置。"

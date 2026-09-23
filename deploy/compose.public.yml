@@ -1,0 +1,47 @@
+name: modelops-public
+
+services:
+  modelops:
+    build:
+      context: ..
+      args:
+        VITE_BASE_PATH: /modelops/
+    environment:
+      MODEL_OPS_DB: /app/runtime/public-demo.db
+      MODEL_OPS_DATA: /app/data
+      MODEL_OPS_PUBLIC_DEMO: "true"
+      MODEL_OPS_ROOT_PATH: /modelops
+      MODEL_OPS_ALLOWED_HOSTS: disabled.invalid
+    # Linux host Nginx reaches this internal address. No host port is published.
+    # Trust forwarding headers only from the bridge gateway used by that proxy.
+    command: ["uvicorn", "modelops.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1", "--proxy-headers", "--forwarded-allow-ips", "172.30.80.1"]
+    volumes:
+      - public-demo-data:/app/runtime
+    networks:
+      public-demo:
+        ipv4_address: 172.30.80.2
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1.0
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+networks:
+  public-demo:
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.30.80.0/28
+          gateway: 172.30.80.1
+
+volumes:
+  public-demo-data:

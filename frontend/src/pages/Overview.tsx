@@ -14,6 +14,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { useApi } from "../api";
+import { usePublicDemo } from "../publicDemo";
 import type { Dashboard } from "../types";
 import {
   Button,
@@ -29,6 +30,7 @@ import {
 import { date, latency, number, percent } from "../utils";
 
 export default function Overview() {
+  const publicDemo = usePublicDemo();
   const query = useApi<Dashboard>("/api/dashboard", 10000);
   const dashboard = query.data;
   return (
@@ -59,7 +61,8 @@ export default function Overview() {
             在一个工作区内，完成接入、测试与验证。
           </p>
           <a href="#evaluations" className="button button-white">
-            创建一次评测 <ArrowUpRight size={16} />
+            {publicDemo ? "查看评测报告" : "创建一次评测"}{" "}
+            <ArrowUpRight size={16} />
           </a>
           <a href="#playground" className="banner-link">
             先试一条工单 <ArrowRight size={15} />
