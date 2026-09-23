@@ -1,0 +1,25 @@
+name: Bug report
+description: Report a reproducible problem in ModelOps Lab
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Please use synthetic data and remove credentials, private addresses and real ticket text."
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include startup mode, provider, and a minimal synthetic input.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python/Node or Docker version, model/runtime version, and relevant request ID.

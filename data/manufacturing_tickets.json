@@ -1,0 +1,2568 @@
+{
+  "name": "制造业合成工单 · v1",
+  "description": "160条人工设计场景的模板合成工单，四类均衡，dev 96条/test 64条；用于流程验证而非生产质量证明。",
+  "source": "synthetic",
+  "revision": "1.0",
+  "rows": [
+    {
+      "id": "SYN-0001",
+      "text": "现场维修记录\n设备编号：未记录；设备：贴标机；产线：未记录；类别：机械；现象：传动皮带磨损导致走纸偏移\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "贴标机",
+        "production_line": null,
+        "reported_at": null,
+        "fault_code": null,
+        "category": "mechanical",
+        "symptom": "传动皮带磨损导致走纸偏移",
+        "action_taken": null,
+        "downtime_minutes": null
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0041",
+      "text": "现场维修记录\n设备编号：EQ-200-1；设备：贴标机；产线：1号产线；报告日期：2025-03-22；故障码：无故障码；类别：电气；现象：光电传感器信号间歇丢失；处理措施：重新固定传感器接线端子；停机时长：4分钟\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-200-1",
+        "equipment": "贴标机",
+        "production_line": "1号产线",
+        "reported_at": "2025-03-22",
+        "fault_code": null,
+        "category": "electrical",
+        "symptom": "光电传感器信号间歇丢失",
+        "action_taken": "重新固定传感器接线端子",
+        "downtime_minutes": 4
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0081",
+      "text": "现场维修记录\n设备编号：EQ-300-1；设备：贴标机；产线：1号产线；报告日期：2025-06-10；故障码：无故障码；类别：软件；现象：打印程序读取工单模板失败；处理措施：恢复模板配置并重新加载程序；停机时长：7分钟\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-300-1",
+        "equipment": "贴标机",
+        "production_line": "1号产线",
+        "reported_at": "2025-06-10",
+        "fault_code": null,
+        "category": "software",
+        "symptom": "打印程序读取工单模板失败",
+        "action_taken": "恢复模板配置并重新加载程序",
+        "downtime_minutes": 7
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0121",
+      "text": "现场维修记录\n设备编号：EQ-400-1；设备：贴标机；产线：1号产线；报告日期：2025-08-29；故障码：无故障码；类别：其他；现象：标签耗材用尽需要补料；处理措施：补充标签卷并登记耗材数量；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-400-1",
+        "equipment": "贴标机",
+        "production_line": "1号产线",
+        "reported_at": "2025-08-29",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "标签耗材用尽需要补料",
+        "action_taken": "补充标签卷并登记耗材数量",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0002",
+      "text": "班组报修单\n报告日期: 2025-01-03\n故障码: E100\n现象: 传动皮带磨损导致走纸偏移\n处理措施: 更换传动皮带并重新调整张力\n停机时长: 12分钟\n设备编号: EQ-100-2\n设备: 贴标机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-100-2",
+        "equipment": "贴标机",
+        "production_line": "2号产线",
+        "reported_at": "2025-01-03",
+        "fault_code": "E100",
+        "category": "mechanical",
+        "symptom": "传动皮带磨损导致走纸偏移",
+        "action_taken": "更换传动皮带并重新调整张力",
+        "downtime_minutes": 12
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0042",
+      "text": "班组报修单\n报告日期: 2025-03-24\n故障码: E200\n现象: 光电传感器信号间歇丢失\n处理措施: 重新固定传感器接线端子\n停机时长: 15分钟\n设备编号: EQ-200-2\n设备: 贴标机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-200-2",
+        "equipment": "贴标机",
+        "production_line": "2号产线",
+        "reported_at": "2025-03-24",
+        "fault_code": "E200",
+        "category": "electrical",
+        "symptom": "光电传感器信号间歇丢失",
+        "action_taken": "重新固定传感器接线端子",
+        "downtime_minutes": 15
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0082",
+      "text": "班组报修单\n报告日期: 2025-06-12\n故障码: E300\n现象: 打印程序读取工单模板失败\n停机时长: 18分钟\n设备编号: EQ-300-2\n设备: 贴标机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-300-2",
+        "equipment": "贴标机",
+        "production_line": "2号产线",
+        "reported_at": "2025-06-12",
+        "fault_code": "E300",
+        "category": "software",
+        "symptom": "打印程序读取工单模板失败",
+        "action_taken": null,
+        "downtime_minutes": 18
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0122",
+      "text": "班组报修单\n故障码: 无故障码\n现象: 标签耗材用尽需要补料\n处理措施: 补充标签卷并登记耗材数量\n停机时长: 未停机\n设备编号: EQ-400-2\n设备: 贴标机\n报告日期: 2025-08-31\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-400-2",
+        "equipment": "贴标机",
+        "production_line": null,
+        "reported_at": "2025-08-31",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "标签耗材用尽需要补料",
+        "action_taken": "补充标签卷并登记耗材数量",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0003",
+      "text": "设备巡查记录\n设备编号=EQ-100-3 | 设备=贴标机 | 产线=3号产线 | 报告日期=2025年1月5日 | 故障码=E100 | 现象=传动皮带磨损导致走纸偏移 | 处理措施=更换传动皮带并重新调整张力 | 停机时长=23分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-100-3",
+        "equipment": "贴标机",
+        "production_line": "3号产线",
+        "reported_at": "2025-01-05",
+        "fault_code": "E100",
+        "category": "mechanical",
+        "symptom": "传动皮带磨损导致走纸偏移",
+        "action_taken": "更换传动皮带并重新调整张力",
+        "downtime_minutes": 23
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0043",
+      "text": "设备巡查记录\n设备编号=未记录 | 设备=贴标机 | 产线=3号产线 | 报告日期=2025年3月26日 | 故障码=E200 | 现象=光电传感器信号间歇丢失 | 处理措施=重新固定传感器接线端子 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "贴标机",
+        "production_line": "3号产线",
+        "reported_at": "2025-03-26",
+        "fault_code": "E200",
+        "category": "electrical",
+        "symptom": "光电传感器信号间歇丢失",
+        "action_taken": "重新固定传感器接线端子",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0083",
+      "text": "设备巡查记录\n设备编号=EQ-300-3 | 设备=贴标机 | 产线=3号产线 | 报告日期=2025年6月14日 | 故障码=E300 | 现象=打印程序读取工单模板失败 | 处理措施=恢复模板配置并重新加载程序 | 停机时长=29分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-300-3",
+        "equipment": "贴标机",
+        "production_line": "3号产线",
+        "reported_at": "2025-06-14",
+        "fault_code": "E300",
+        "category": "software",
+        "symptom": "打印程序读取工单模板失败",
+        "action_taken": "恢复模板配置并重新加载程序",
+        "downtime_minutes": 29
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0123",
+      "text": "设备巡查记录\n设备编号=EQ-400-3 | 设备=贴标机 | 产线=3号产线 | 报告日期=2025年9月2日 | 故障码=无故障码 | 现象=标签耗材用尽需要补料 | 处理措施=补充标签卷并登记耗材数量 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-400-3",
+        "equipment": "贴标机",
+        "production_line": "3号产线",
+        "reported_at": "2025-09-02",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "标签耗材用尽需要补料",
+        "action_taken": "补充标签卷并登记耗材数量",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0004",
+      "text": "工单补充记录\n停机时长：34分钟。处理措施：更换传动皮带并重新调整张力。现象：传动皮带磨损导致走纸偏移。故障码：E100。报告日期：2025-01-07。产线：4号产线。设备：贴标机。设备编号：EQ-100-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-100-4",
+        "equipment": "贴标机",
+        "production_line": "4号产线",
+        "reported_at": "2025-01-07",
+        "fault_code": "E100",
+        "category": "mechanical",
+        "symptom": "传动皮带磨损导致走纸偏移",
+        "action_taken": "更换传动皮带并重新调整张力",
+        "downtime_minutes": 34
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0044",
+      "text": "工单补充记录\n停机时长：37分钟。处理措施：重新固定传感器接线端子。现象：光电传感器信号间歇丢失。故障码：E200。报告日期：2025-03-28。产线：4号产线。设备：贴标机。设备编号：EQ-200-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-200-4",
+        "equipment": "贴标机",
+        "production_line": "4号产线",
+        "reported_at": "2025-03-28",
+        "fault_code": "E200",
+        "category": "electrical",
+        "symptom": "光电传感器信号间歇丢失",
+        "action_taken": "重新固定传感器接线端子",
+        "downtime_minutes": 37
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0084",
+      "text": "工单补充记录\n停机时长：40分钟。处理措施：恢复模板配置并重新加载程序。现象：打印程序读取工单模板失败。故障码：E300。报告日期：2025-06-16。产线：4号产线。设备：贴标机。设备编号：EQ-300-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-300-4",
+        "equipment": "贴标机",
+        "production_line": "4号产线",
+        "reported_at": "2025-06-16",
+        "fault_code": "E300",
+        "category": "software",
+        "symptom": "打印程序读取工单模板失败",
+        "action_taken": "恢复模板配置并重新加载程序",
+        "downtime_minutes": 40
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0124",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：补充标签卷并登记耗材数量。现象：标签耗材用尽需要补料。报告日期：2025-09-04。产线：4号产线。设备：贴标机。设备编号：EQ-400-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-400-4",
+        "equipment": "贴标机",
+        "production_line": "4号产线",
+        "reported_at": "2025-09-04",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "标签耗材用尽需要补料",
+        "action_taken": "补充标签卷并登记耗材数量",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0005",
+      "text": "现场维修记录\n设备编号：EQ-101-1；设备：输送机；产线：5号产线；报告日期：2025-01-09；故障码：E101；类别：机械；现象：滚筒轴承异响且伴随振动；处理措施：更换轴承并补充润滑脂；停机时长：8分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-101-1",
+        "equipment": "输送机",
+        "production_line": "5号产线",
+        "reported_at": "2025-01-09",
+        "fault_code": "E101",
+        "category": "mechanical",
+        "symptom": "滚筒轴承异响且伴随振动",
+        "action_taken": "更换轴承并补充润滑脂",
+        "downtime_minutes": 8
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0045",
+      "text": "现场维修记录\n设备编号：EQ-201-1；设备：输送机；产线：未记录；报告日期：2025-03-30；故障码：E201；类别：电气；现象：电机过载导致断路器跳闸；处理措施：检查电机接线后复位断路器；停机时长：11分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-201-1",
+        "equipment": "输送机",
+        "production_line": null,
+        "reported_at": "2025-03-30",
+        "fault_code": "E201",
+        "category": "electrical",
+        "symptom": "电机过载导致断路器跳闸",
+        "action_taken": "检查电机接线后复位断路器",
+        "downtime_minutes": 11
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0085",
+      "text": "现场维修记录\n设备编号：未记录；设备：输送机；产线：5号产线；报告日期：2025-06-18；故障码：E301；类别：软件；现象：调度软件任务队列阻塞；处理措施：清理异常任务并重启调度服务；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "输送机",
+        "production_line": "5号产线",
+        "reported_at": "2025-06-18",
+        "fault_code": "E301",
+        "category": "software",
+        "symptom": "调度软件任务队列阻塞",
+        "action_taken": "清理异常任务并重启调度服务",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0125",
+      "text": "现场维修记录\n设备编号：EQ-401-1；设备：输送机；产线：5号产线；报告日期：2025-09-06；故障码：无故障码；类别：其他；现象：工位待清洁但设备运行正常；处理措施：完成工位清洁并记录检查结果；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-401-1",
+        "equipment": "输送机",
+        "production_line": "5号产线",
+        "reported_at": "2025-09-06",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "工位待清洁但设备运行正常",
+        "action_taken": "完成工位清洁并记录检查结果",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0006",
+      "text": "班组报修单\n报告日期: 2025-01-11\n现象: 滚筒轴承异响且伴随振动\n处理措施: 更换轴承并补充润滑脂\n停机时长: 19分钟\n设备编号: EQ-101-2\n设备: 输送机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-101-2",
+        "equipment": "输送机",
+        "production_line": "6号产线",
+        "reported_at": "2025-01-11",
+        "fault_code": null,
+        "category": "mechanical",
+        "symptom": "滚筒轴承异响且伴随振动",
+        "action_taken": "更换轴承并补充润滑脂",
+        "downtime_minutes": 19
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0046",
+      "text": "班组报修单\n报告日期: 2025-04-01\n现象: 电机过载导致断路器跳闸\n处理措施: 未记录\n停机时长: 22分钟\n设备编号: EQ-201-2\n设备: 输送机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-201-2",
+        "equipment": "输送机",
+        "production_line": "6号产线",
+        "reported_at": "2025-04-01",
+        "fault_code": null,
+        "category": "electrical",
+        "symptom": "电机过载导致断路器跳闸",
+        "action_taken": null,
+        "downtime_minutes": 22
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0086",
+      "text": "班组报修单\n报告日期: 2025-06-20\n现象: 调度软件任务队列阻塞\n处理措施: 清理异常任务并重启调度服务\n设备编号: EQ-301-2\n设备: 输送机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-301-2",
+        "equipment": "输送机",
+        "production_line": "6号产线",
+        "reported_at": "2025-06-20",
+        "fault_code": null,
+        "category": "software",
+        "symptom": "调度软件任务队列阻塞",
+        "action_taken": "清理异常任务并重启调度服务",
+        "downtime_minutes": null
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0126",
+      "text": "班组报修单\n报告日期: 2025-09-08\n现象: 工位待清洁但设备运行正常\n处理措施: 完成工位清洁并记录检查结果\n停机时长: 未停机\n设备编号: EQ-401-2\n设备: 输送机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-401-2",
+        "equipment": "输送机",
+        "production_line": "6号产线",
+        "reported_at": "2025-09-08",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "工位待清洁但设备运行正常",
+        "action_taken": "完成工位清洁并记录检查结果",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0007",
+      "text": "设备巡查记录\n设备编号=EQ-101-3 | 设备=输送机 | 产线=7号产线 | 报告日期=2025年1月13日 | 故障码=E101 | 现象=滚筒轴承异响且伴随振动 | 处理措施=更换轴承并补充润滑脂 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-101-3",
+        "equipment": "输送机",
+        "production_line": "7号产线",
+        "reported_at": "2025-01-13",
+        "fault_code": "E101",
+        "category": "mechanical",
+        "symptom": "滚筒轴承异响且伴随振动",
+        "action_taken": "更换轴承并补充润滑脂",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0047",
+      "text": "设备巡查记录\n设备编号=EQ-201-3 | 设备=输送机 | 产线=7号产线 | 报告日期=2025年4月3日 | 故障码=E201 | 现象=电机过载导致断路器跳闸 | 处理措施=检查电机接线后复位断路器 | 停机时长=33分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-201-3",
+        "equipment": "输送机",
+        "production_line": "7号产线",
+        "reported_at": "2025-04-03",
+        "fault_code": "E201",
+        "category": "electrical",
+        "symptom": "电机过载导致断路器跳闸",
+        "action_taken": "检查电机接线后复位断路器",
+        "downtime_minutes": 33
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0087",
+      "text": "设备巡查记录\n设备编号=EQ-301-3 | 设备=输送机 | 产线=7号产线 | 报告日期=2025年6月22日 | 故障码=E301 | 现象=调度软件任务队列阻塞 | 处理措施=清理异常任务并重启调度服务 | 停机时长=36分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-301-3",
+        "equipment": "输送机",
+        "production_line": "7号产线",
+        "reported_at": "2025-06-22",
+        "fault_code": "E301",
+        "category": "software",
+        "symptom": "调度软件任务队列阻塞",
+        "action_taken": "清理异常任务并重启调度服务",
+        "downtime_minutes": 36
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0127",
+      "text": "设备巡查记录\n设备编号=未记录 | 设备=输送机 | 产线=7号产线 | 报告日期=2025年9月10日 | 故障码=无故障码 | 现象=工位待清洁但设备运行正常 | 处理措施=未记录 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "输送机",
+        "production_line": "7号产线",
+        "reported_at": "2025-09-10",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "工位待清洁但设备运行正常",
+        "action_taken": null,
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0008",
+      "text": "工单补充记录\n停机时长：41分钟。处理措施：更换轴承并补充润滑脂。现象：滚筒轴承异响且伴随振动。故障码：E101。报告日期：2025-01-15。产线：8号产线。设备：输送机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "输送机",
+        "production_line": "8号产线",
+        "reported_at": "2025-01-15",
+        "fault_code": "E101",
+        "category": "mechanical",
+        "symptom": "滚筒轴承异响且伴随振动",
+        "action_taken": "更换轴承并补充润滑脂",
+        "downtime_minutes": 41
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0048",
+      "text": "工单补充记录\n停机时长：44分钟。处理措施：检查电机接线后复位断路器。现象：电机过载导致断路器跳闸。故障码：E201。报告日期：2025-04-05。产线：8号产线。设备：输送机。设备编号：EQ-201-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-201-4",
+        "equipment": "输送机",
+        "production_line": "8号产线",
+        "reported_at": "2025-04-05",
+        "fault_code": "E201",
+        "category": "electrical",
+        "symptom": "电机过载导致断路器跳闸",
+        "action_taken": "检查电机接线后复位断路器",
+        "downtime_minutes": 44
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0088",
+      "text": "工单补充记录\n停机时长：47分钟。处理措施：清理异常任务并重启调度服务。现象：调度软件任务队列阻塞。故障码：E301。报告日期：2025-06-24。产线：8号产线。设备：输送机。设备编号：EQ-301-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-301-4",
+        "equipment": "输送机",
+        "production_line": "8号产线",
+        "reported_at": "2025-06-24",
+        "fault_code": "E301",
+        "category": "software",
+        "symptom": "调度软件任务队列阻塞",
+        "action_taken": "清理异常任务并重启调度服务",
+        "downtime_minutes": 47
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0128",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：完成工位清洁并记录检查结果。现象：工位待清洁但设备运行正常。报告日期：2025-09-12。产线：8号产线。设备：输送机。设备编号：EQ-401-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-401-4",
+        "equipment": "输送机",
+        "production_line": "8号产线",
+        "reported_at": "2025-09-12",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "工位待清洁但设备运行正常",
+        "action_taken": "完成工位清洁并记录检查结果",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0009",
+      "text": "现场维修记录\n设备编号：EQ-102-1；设备：封箱机；产线：1号产线；报告日期：2025-01-17；故障码：E102；类别：机械；现象：导向轮松动造成纸箱卡滞；处理措施：紧固导向轮并完成试运行；停机时长：15分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-102-1",
+        "equipment": "封箱机",
+        "production_line": "1号产线",
+        "reported_at": "2025-01-17",
+        "fault_code": "E102",
+        "category": "mechanical",
+        "symptom": "导向轮松动造成纸箱卡滞",
+        "action_taken": "紧固导向轮并完成试运行",
+        "downtime_minutes": 15
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0049",
+      "text": "现场维修记录\n设备编号：EQ-202-1；设备：封箱机；产线：1号产线；报告日期：2025-04-07；故障码：E202；类别：电气；现象：接触器触点氧化导致无法启动；处理措施：更换接触器并测试启动回路；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-202-1",
+        "equipment": "封箱机",
+        "production_line": "1号产线",
+        "reported_at": "2025-04-07",
+        "fault_code": "E202",
+        "category": "electrical",
+        "symptom": "接触器触点氧化导致无法启动",
+        "action_taken": "更换接触器并测试启动回路",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0089",
+      "text": "现场维修记录\n设备编号：EQ-302-1；设备：封箱机；产线：未记录；报告日期：2025-06-26；故障码：E302；类别：软件；现象：操作界面显示旧版本参数；处理措施：刷新界面缓存并同步参数版本；停机时长：21分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-302-1",
+        "equipment": "封箱机",
+        "production_line": null,
+        "reported_at": "2025-06-26",
+        "fault_code": "E302",
+        "category": "software",
+        "symptom": "操作界面显示旧版本参数",
+        "action_taken": "刷新界面缓存并同步参数版本",
+        "downtime_minutes": 21
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0129",
+      "text": "现场维修记录\n设备编号：EQ-402-1；设备：封箱机；产线：1号产线；报告日期：2025-09-14；故障码：无故障码；类别：其他；现象：包装胶带库存不足；处理措施：补充包装胶带并通知仓库备料；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-402-1",
+        "equipment": "封箱机",
+        "production_line": "1号产线",
+        "reported_at": "2025-09-14",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "包装胶带库存不足",
+        "action_taken": "补充包装胶带并通知仓库备料",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0010",
+      "text": "班组报修单\n报告日期: 2025-01-19\n故障码: E102\n现象: 导向轮松动造成纸箱卡滞\n停机时长: 26分钟\n设备编号: EQ-102-2\n设备: 封箱机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-102-2",
+        "equipment": "封箱机",
+        "production_line": "2号产线",
+        "reported_at": "2025-01-19",
+        "fault_code": "E102",
+        "category": "mechanical",
+        "symptom": "导向轮松动造成纸箱卡滞",
+        "action_taken": null,
+        "downtime_minutes": 26
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0050",
+      "text": "班组报修单\n故障码: E202\n现象: 接触器触点氧化导致无法启动\n处理措施: 更换接触器并测试启动回路\n停机时长: 29分钟\n设备: 封箱机\n产线: 2号产线\n报告日期: 2025-04-09\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "封箱机",
+        "production_line": "2号产线",
+        "reported_at": "2025-04-09",
+        "fault_code": "E202",
+        "category": "electrical",
+        "symptom": "接触器触点氧化导致无法启动",
+        "action_taken": "更换接触器并测试启动回路",
+        "downtime_minutes": 29
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0090",
+      "text": "班组报修单\n报告日期: 2025-06-28\n故障码: E302\n现象: 操作界面显示旧版本参数\n处理措施: 刷新界面缓存并同步参数版本\n停机时长: 32分钟\n设备编号: EQ-302-2\n设备: 封箱机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-302-2",
+        "equipment": "封箱机",
+        "production_line": "2号产线",
+        "reported_at": "2025-06-28",
+        "fault_code": "E302",
+        "category": "software",
+        "symptom": "操作界面显示旧版本参数",
+        "action_taken": "刷新界面缓存并同步参数版本",
+        "downtime_minutes": 32
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0130",
+      "text": "班组报修单\n报告日期: 2025-09-16\n现象: 包装胶带库存不足\n处理措施: 补充包装胶带并通知仓库备料\n停机时长: 未停机\n设备编号: EQ-402-2\n设备: 封箱机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-402-2",
+        "equipment": "封箱机",
+        "production_line": "2号产线",
+        "reported_at": "2025-09-16",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "包装胶带库存不足",
+        "action_taken": "补充包装胶带并通知仓库备料",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0011",
+      "text": "设备巡查记录\n设备编号=EQ-102-3 | 设备=封箱机 | 产线=3号产线 | 报告日期=2025年1月21日 | 故障码=无故障码 | 现象=导向轮松动造成纸箱卡滞 | 处理措施=紧固导向轮并完成试运行 | 停机时长=37分钟\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-102-3",
+        "equipment": "封箱机",
+        "production_line": "3号产线",
+        "reported_at": "2025-01-21",
+        "fault_code": null,
+        "category": "mechanical",
+        "symptom": "导向轮松动造成纸箱卡滞",
+        "action_taken": "紧固导向轮并完成试运行",
+        "downtime_minutes": 37
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0051",
+      "text": "设备巡查记录\n设备编号=EQ-202-3 | 设备=封箱机 | 产线=3号产线 | 报告日期=2025年4月11日 | 故障码=无故障码 | 现象=接触器触点氧化导致无法启动 | 处理措施=更换接触器并测试启动回路 | 停机时长=40分钟\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-202-3",
+        "equipment": "封箱机",
+        "production_line": "3号产线",
+        "reported_at": "2025-04-11",
+        "fault_code": null,
+        "category": "electrical",
+        "symptom": "接触器触点氧化导致无法启动",
+        "action_taken": "更换接触器并测试启动回路",
+        "downtime_minutes": 40
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0091",
+      "text": "设备巡查记录\n设备编号=EQ-302-3 | 设备=封箱机 | 产线=3号产线 | 报告日期=2025年6月30日 | 故障码=无故障码 | 现象=操作界面显示旧版本参数 | 处理措施=未记录 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-302-3",
+        "equipment": "封箱机",
+        "production_line": "3号产线",
+        "reported_at": "2025-06-30",
+        "fault_code": null,
+        "category": "software",
+        "symptom": "操作界面显示旧版本参数",
+        "action_taken": null,
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0131",
+      "text": "设备巡查记录\n设备编号=EQ-402-3 | 设备=封箱机 | 产线=3号产线 | 现象=包装胶带库存不足 | 处理措施=补充包装胶带并通知仓库备料 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-402-3",
+        "equipment": "封箱机",
+        "production_line": "3号产线",
+        "reported_at": null,
+        "fault_code": null,
+        "category": "other",
+        "symptom": "包装胶带库存不足",
+        "action_taken": "补充包装胶带并通知仓库备料",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0012",
+      "text": "工单补充记录\n停机时长：48分钟。处理措施：紧固导向轮并完成试运行。现象：导向轮松动造成纸箱卡滞。故障码：E102。报告日期：2025-01-23。设备：封箱机。设备编号：EQ-102-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-102-4",
+        "equipment": "封箱机",
+        "production_line": null,
+        "reported_at": "2025-01-23",
+        "fault_code": "E102",
+        "category": "mechanical",
+        "symptom": "导向轮松动造成纸箱卡滞",
+        "action_taken": "紧固导向轮并完成试运行",
+        "downtime_minutes": 48
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0052",
+      "text": "工单补充记录\n停机时长：未记录。处理措施：更换接触器并测试启动回路。现象：接触器触点氧化导致无法启动。故障码：E202。报告日期：2025-04-13。产线：4号产线。设备：封箱机。设备编号：EQ-202-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-202-4",
+        "equipment": "封箱机",
+        "production_line": "4号产线",
+        "reported_at": "2025-04-13",
+        "fault_code": "E202",
+        "category": "electrical",
+        "symptom": "接触器触点氧化导致无法启动",
+        "action_taken": "更换接触器并测试启动回路",
+        "downtime_minutes": null
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0092",
+      "text": "工单补充记录\n停机时长：54分钟。处理措施：刷新界面缓存并同步参数版本。现象：操作界面显示旧版本参数。故障码：E302。产线：4号产线。设备：封箱机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "封箱机",
+        "production_line": "4号产线",
+        "reported_at": null,
+        "fault_code": "E302",
+        "category": "software",
+        "symptom": "操作界面显示旧版本参数",
+        "action_taken": "刷新界面缓存并同步参数版本",
+        "downtime_minutes": 54
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0132",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：补充包装胶带并通知仓库备料。现象：包装胶带库存不足。报告日期：2025-09-20。产线：4号产线。设备：封箱机。设备编号：EQ-402-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-402-4",
+        "equipment": "封箱机",
+        "production_line": "4号产线",
+        "reported_at": "2025-09-20",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "包装胶带库存不足",
+        "action_taken": "补充包装胶带并通知仓库备料",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0013",
+      "text": "现场维修记录\n设备编号：EQ-103-1；设备：包装机；产线：5号产线；报告日期：2025-01-25；故障码：E103；类别：机械；现象：气缸密封圈老化出现漏气；处理措施：更换密封圈并进行保压检查；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-103-1",
+        "equipment": "包装机",
+        "production_line": "5号产线",
+        "reported_at": "2025-01-25",
+        "fault_code": "E103",
+        "category": "mechanical",
+        "symptom": "气缸密封圈老化出现漏气",
+        "action_taken": "更换密封圈并进行保压检查",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0053",
+      "text": "现场维修记录\n设备编号：EQ-203-1；设备：包装机；产线：5号产线；故障码：E203；类别：电气；现象：电源电压波动导致设备重启；处理措施：检修电源模块并记录输出电压；停机时长：25分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-203-1",
+        "equipment": "包装机",
+        "production_line": "5号产线",
+        "reported_at": null,
+        "fault_code": "E203",
+        "category": "electrical",
+        "symptom": "电源电压波动导致设备重启",
+        "action_taken": "检修电源模块并记录输出电压",
+        "downtime_minutes": 25
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0093",
+      "text": "现场维修记录\n设备编号：EQ-303-1；设备：包装机；产线：5号产线；报告日期：2025-07-04；故障码：E303；类别：软件；现象：配方配置缺少必填参数；处理措施：补全配方参数并重新校验配置；停机时长：28分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-303-1",
+        "equipment": "包装机",
+        "production_line": "5号产线",
+        "reported_at": "2025-07-04",
+        "fault_code": "E303",
+        "category": "software",
+        "symptom": "配方配置缺少必填参数",
+        "action_taken": "补全配方参数并重新校验配置",
+        "downtime_minutes": 28
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0133",
+      "text": "现场维修记录\n设备编号：EQ-403-1；设备：包装机；产线：未记录；报告日期：2025-09-22；故障码：无故障码；类别：其他；现象：来料外包装破损需暂存复核；处理措施：隔离破损包装并登记复核单；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-403-1",
+        "equipment": "包装机",
+        "production_line": null,
+        "reported_at": "2025-09-22",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "来料外包装破损需暂存复核",
+        "action_taken": "隔离破损包装并登记复核单",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0014",
+      "text": "班组报修单\n报告日期: 未记录\n故障码: E103\n现象: 气缸密封圈老化出现漏气\n处理措施: 更换密封圈并进行保压检查\n停机时长: 33分钟\n设备编号: EQ-103-2\n设备: 包装机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-103-2",
+        "equipment": "包装机",
+        "production_line": "6号产线",
+        "reported_at": null,
+        "fault_code": "E103",
+        "category": "mechanical",
+        "symptom": "气缸密封圈老化出现漏气",
+        "action_taken": "更换密封圈并进行保压检查",
+        "downtime_minutes": 33
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0054",
+      "text": "班组报修单\n报告日期: 2025-04-17\n故障码: E203\n现象: 电源电压波动导致设备重启\n处理措施: 检修电源模块并记录输出电压\n停机时长: 36分钟\n设备编号: EQ-203-2\n设备: 包装机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-203-2",
+        "equipment": "包装机",
+        "production_line": "6号产线",
+        "reported_at": "2025-04-17",
+        "fault_code": "E203",
+        "category": "electrical",
+        "symptom": "电源电压波动导致设备重启",
+        "action_taken": "检修电源模块并记录输出电压",
+        "downtime_minutes": 36
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0094",
+      "text": "班组报修单\n报告日期: 2025-07-06\n故障码: E303\n现象: 配方配置缺少必填参数\n处理措施: 补全配方参数并重新校验配置\n停机时长: 39分钟\n设备编号: EQ-303-2\n设备: 包装机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-303-2",
+        "equipment": "包装机",
+        "production_line": "6号产线",
+        "reported_at": "2025-07-06",
+        "fault_code": "E303",
+        "category": "software",
+        "symptom": "配方配置缺少必填参数",
+        "action_taken": "补全配方参数并重新校验配置",
+        "downtime_minutes": 39
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0134",
+      "text": "班组报修单\n故障码: 无故障码\n现象: 来料外包装破损需暂存复核\n处理措施: 隔离破损包装并登记复核单\n停机时长: 未停机\n设备: 包装机\n产线: 6号产线\n报告日期: 2025-09-24\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "包装机",
+        "production_line": "6号产线",
+        "reported_at": "2025-09-24",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "来料外包装破损需暂存复核",
+        "action_taken": "隔离破损包装并登记复核单",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0015",
+      "text": "设备巡查记录\n设备编号=未记录 | 设备=包装机 | 产线=7号产线 | 报告日期=2025年1月29日 | 故障码=E103 | 现象=气缸密封圈老化出现漏气 | 处理措施=更换密封圈并进行保压检查 | 停机时长=44分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "包装机",
+        "production_line": "7号产线",
+        "reported_at": "2025-01-29",
+        "fault_code": "E103",
+        "category": "mechanical",
+        "symptom": "气缸密封圈老化出现漏气",
+        "action_taken": "更换密封圈并进行保压检查",
+        "downtime_minutes": 44
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0055",
+      "text": "设备巡查记录\n设备编号=EQ-203-3 | 设备=包装机 | 产线=7号产线 | 报告日期=2025年4月19日 | 故障码=E203 | 现象=电源电压波动导致设备重启 | 处理措施=未记录 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-203-3",
+        "equipment": "包装机",
+        "production_line": "7号产线",
+        "reported_at": "2025-04-19",
+        "fault_code": "E203",
+        "category": "electrical",
+        "symptom": "电源电压波动导致设备重启",
+        "action_taken": null,
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0095",
+      "text": "设备巡查记录\n设备编号=EQ-303-3 | 设备=包装机 | 产线=7号产线 | 报告日期=2025年7月8日 | 故障码=E303 | 现象=配方配置缺少必填参数 | 处理措施=补全配方参数并重新校验配置 | 停机时长=50分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-303-3",
+        "equipment": "包装机",
+        "production_line": "7号产线",
+        "reported_at": "2025-07-08",
+        "fault_code": "E303",
+        "category": "software",
+        "symptom": "配方配置缺少必填参数",
+        "action_taken": "补全配方参数并重新校验配置",
+        "downtime_minutes": 50
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0135",
+      "text": "设备巡查记录\n设备编号=EQ-403-3 | 设备=包装机 | 产线=7号产线 | 报告日期=2025年9月26日 | 故障码=无故障码 | 现象=来料外包装破损需暂存复核 | 处理措施=隔离破损包装并登记复核单 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-403-3",
+        "equipment": "包装机",
+        "production_line": "7号产线",
+        "reported_at": "2025-09-26",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "来料外包装破损需暂存复核",
+        "action_taken": "隔离破损包装并登记复核单",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0016",
+      "text": "工单补充记录\n停机时长：55分钟。处理措施：更换密封圈并进行保压检查。现象：气缸密封圈老化出现漏气。报告日期：2025-01-31。产线：8号产线。设备：包装机。设备编号：EQ-103-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-103-4",
+        "equipment": "包装机",
+        "production_line": "8号产线",
+        "reported_at": "2025-01-31",
+        "fault_code": null,
+        "category": "mechanical",
+        "symptom": "气缸密封圈老化出现漏气",
+        "action_taken": "更换密封圈并进行保压检查",
+        "downtime_minutes": 55
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0056",
+      "text": "工单补充记录\n停机时长：58分钟。处理措施：检修电源模块并记录输出电压。现象：电源电压波动导致设备重启。故障码：无故障码。报告日期：2025-04-21。设备：包装机。设备编号：EQ-203-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-203-4",
+        "equipment": "包装机",
+        "production_line": null,
+        "reported_at": "2025-04-21",
+        "fault_code": null,
+        "category": "electrical",
+        "symptom": "电源电压波动导致设备重启",
+        "action_taken": "检修电源模块并记录输出电压",
+        "downtime_minutes": 58
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0096",
+      "text": "工单补充记录\n停机时长：61分钟。处理措施：补全配方参数并重新校验配置。现象：配方配置缺少必填参数。报告日期：2025-07-10。产线：8号产线。设备：包装机。设备编号：EQ-303-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-303-4",
+        "equipment": "包装机",
+        "production_line": "8号产线",
+        "reported_at": "2025-07-10",
+        "fault_code": null,
+        "category": "software",
+        "symptom": "配方配置缺少必填参数",
+        "action_taken": "补全配方参数并重新校验配置",
+        "downtime_minutes": 61
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0136",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：未记录。现象：来料外包装破损需暂存复核。报告日期：2025-09-28。产线：8号产线。设备：包装机。设备编号：EQ-403-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-403-4",
+        "equipment": "包装机",
+        "production_line": "8号产线",
+        "reported_at": "2025-09-28",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "来料外包装破损需暂存复核",
+        "action_taken": null,
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0017",
+      "text": "现场维修记录\n设备编号：EQ-104-1；设备：压装机；产线：1号产线；报告日期：2025-02-02；故障码：E104；类别：机械；现象：定位销磨损导致压装位置偏差；处理措施：更换定位销后校验定位尺寸；停机时长：29分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-104-1",
+        "equipment": "压装机",
+        "production_line": "1号产线",
+        "reported_at": "2025-02-02",
+        "fault_code": "E104",
+        "category": "mechanical",
+        "symptom": "定位销磨损导致压装位置偏差",
+        "action_taken": "更换定位销后校验定位尺寸",
+        "downtime_minutes": 29
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0057",
+      "text": "现场维修记录\n设备编号：未记录；设备：压装机；产线：1号产线；报告日期：2025-04-23；故障码：E204；类别：电气；现象：急停按钮触点接触不良；处理措施：更换急停按钮并测试安全回路；停机时长：32分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "压装机",
+        "production_line": "1号产线",
+        "reported_at": "2025-04-23",
+        "fault_code": "E204",
+        "category": "electrical",
+        "symptom": "急停按钮触点接触不良",
+        "action_taken": "更换急停按钮并测试安全回路",
+        "downtime_minutes": 32
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0097",
+      "text": "现场维修记录\n设备编号：EQ-304-1；设备：压装机；产线：1号产线；报告日期：2025-07-12；故障码：E304；类别：软件；现象：采集服务与数据库连接超时；处理措施：恢复数据库连接并补传缓存数据；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-304-1",
+        "equipment": "压装机",
+        "production_line": "1号产线",
+        "reported_at": "2025-07-12",
+        "fault_code": "E304",
+        "category": "software",
+        "symptom": "采集服务与数据库连接超时",
+        "action_taken": "恢复数据库连接并补传缓存数据",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0137",
+      "text": "现场维修记录\n设备编号：EQ-404-1；设备：压装机；产线：1号产线；报告日期：2025-09-30；故障码：无故障码；类别：其他；现象：班组交接记录缺少签名；处理措施：补齐交接记录并完成复核；停机时长：未记录\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-404-1",
+        "equipment": "压装机",
+        "production_line": "1号产线",
+        "reported_at": "2025-09-30",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "班组交接记录缺少签名",
+        "action_taken": "补齐交接记录并完成复核",
+        "downtime_minutes": null
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0018",
+      "text": "班组报修单\n报告日期: 2025-02-04\n故障码: E104\n现象: 定位销磨损导致压装位置偏差\n处理措施: 更换定位销后校验定位尺寸\n停机时长: 未记录\n设备编号: EQ-104-2\n设备: 压装机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-104-2",
+        "equipment": "压装机",
+        "production_line": "2号产线",
+        "reported_at": "2025-02-04",
+        "fault_code": "E104",
+        "category": "mechanical",
+        "symptom": "定位销磨损导致压装位置偏差",
+        "action_taken": "更换定位销后校验定位尺寸",
+        "downtime_minutes": null
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0058",
+      "text": "班组报修单\n报告日期: 2025-04-25\n故障码: E204\n现象: 急停按钮触点接触不良\n处理措施: 更换急停按钮并测试安全回路\n停机时长: 43分钟\n设备编号: EQ-204-2\n设备: 压装机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-204-2",
+        "equipment": "压装机",
+        "production_line": "2号产线",
+        "reported_at": "2025-04-25",
+        "fault_code": "E204",
+        "category": "electrical",
+        "symptom": "急停按钮触点接触不良",
+        "action_taken": "更换急停按钮并测试安全回路",
+        "downtime_minutes": 43
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0098",
+      "text": "班组报修单\n报告日期: 2025-07-14\n故障码: E304\n现象: 采集服务与数据库连接超时\n处理措施: 恢复数据库连接并补传缓存数据\n停机时长: 46分钟\n设备编号: EQ-304-2\n设备: 压装机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-304-2",
+        "equipment": "压装机",
+        "production_line": "2号产线",
+        "reported_at": "2025-07-14",
+        "fault_code": "E304",
+        "category": "software",
+        "symptom": "采集服务与数据库连接超时",
+        "action_taken": "恢复数据库连接并补传缓存数据",
+        "downtime_minutes": 46
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0138",
+      "text": "班组报修单\n报告日期: 2025-10-02\n现象: 班组交接记录缺少签名\n处理措施: 补齐交接记录并完成复核\n停机时长: 未停机\n设备编号: EQ-404-2\n设备: 压装机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-404-2",
+        "equipment": "压装机",
+        "production_line": "2号产线",
+        "reported_at": "2025-10-02",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "班组交接记录缺少签名",
+        "action_taken": "补齐交接记录并完成复核",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0019",
+      "text": "设备巡查记录\n设备编号=EQ-104-3 | 设备=压装机 | 产线=3号产线 | 报告日期=2025年2月6日 | 故障码=E104 | 现象=定位销磨损导致压装位置偏差 | 处理措施=未记录 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-104-3",
+        "equipment": "压装机",
+        "production_line": "3号产线",
+        "reported_at": "2025-02-06",
+        "fault_code": "E104",
+        "category": "mechanical",
+        "symptom": "定位销磨损导致压装位置偏差",
+        "action_taken": null,
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0059",
+      "text": "设备巡查记录\n设备编号=EQ-204-3 | 设备=压装机 | 产线=3号产线 | 报告日期=2025年4月27日 | 故障码=E204 | 现象=急停按钮触点接触不良 | 处理措施=更换急停按钮并测试安全回路 | 停机时长=54分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-204-3",
+        "equipment": "压装机",
+        "production_line": "3号产线",
+        "reported_at": "2025-04-27",
+        "fault_code": "E204",
+        "category": "electrical",
+        "symptom": "急停按钮触点接触不良",
+        "action_taken": "更换急停按钮并测试安全回路",
+        "downtime_minutes": 54
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0099",
+      "text": "设备巡查记录\n设备编号=未记录 | 设备=压装机 | 产线=3号产线 | 报告日期=2025年7月16日 | 故障码=E304 | 现象=采集服务与数据库连接超时 | 处理措施=恢复数据库连接并补传缓存数据 | 停机时长=57分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "压装机",
+        "production_line": "3号产线",
+        "reported_at": "2025-07-16",
+        "fault_code": "E304",
+        "category": "software",
+        "symptom": "采集服务与数据库连接超时",
+        "action_taken": "恢复数据库连接并补传缓存数据",
+        "downtime_minutes": 57
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0139",
+      "text": "设备巡查记录\n设备编号=EQ-404-3 | 设备=压装机 | 产线=3号产线 | 报告日期=2025年10月4日 | 故障码=无故障码 | 现象=班组交接记录缺少签名 | 处理措施=补齐交接记录并完成复核 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-404-3",
+        "equipment": "压装机",
+        "production_line": "3号产线",
+        "reported_at": "2025-10-04",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "班组交接记录缺少签名",
+        "action_taken": "补齐交接记录并完成复核",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0020",
+      "text": "工单补充记录\n停机时长：62分钟。处理措施：更换定位销后校验定位尺寸。现象：定位销磨损导致压装位置偏差。故障码：E104。报告日期：2025-02-08。产线：4号产线。设备：压装机。设备编号：EQ-104-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-104-4",
+        "equipment": "压装机",
+        "production_line": "4号产线",
+        "reported_at": "2025-02-08",
+        "fault_code": "E104",
+        "category": "mechanical",
+        "symptom": "定位销磨损导致压装位置偏差",
+        "action_taken": "更换定位销后校验定位尺寸",
+        "downtime_minutes": 62
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0060",
+      "text": "工单补充记录\n停机时长：65分钟。处理措施：更换急停按钮并测试安全回路。现象：急停按钮触点接触不良。故障码：E204。报告日期：2025-04-29。产线：4号产线。设备：压装机。设备编号：EQ-204-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-204-4",
+        "equipment": "压装机",
+        "production_line": "4号产线",
+        "reported_at": "2025-04-29",
+        "fault_code": "E204",
+        "category": "electrical",
+        "symptom": "急停按钮触点接触不良",
+        "action_taken": "更换急停按钮并测试安全回路",
+        "downtime_minutes": 65
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0100",
+      "text": "工单补充记录\n停机时长：3分钟。处理措施：未记录。现象：采集服务与数据库连接超时。故障码：E304。报告日期：2025-07-18。设备：压装机。设备编号：EQ-304-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-304-4",
+        "equipment": "压装机",
+        "production_line": null,
+        "reported_at": "2025-07-18",
+        "fault_code": "E304",
+        "category": "software",
+        "symptom": "采集服务与数据库连接超时",
+        "action_taken": null,
+        "downtime_minutes": 3
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0140",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：补齐交接记录并完成复核。现象：班组交接记录缺少签名。报告日期：2025-10-06。产线：4号产线。设备：压装机。设备编号：EQ-404-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-404-4",
+        "equipment": "压装机",
+        "production_line": "4号产线",
+        "reported_at": "2025-10-06",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "班组交接记录缺少签名",
+        "action_taken": "补齐交接记录并完成复核",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0021",
+      "text": "现场维修记录\n设备编号：EQ-105-1；设备：分拣机；产线：5号产线；报告日期：2025-02-10；故障码：无故障码；类别：机械；现象：链条张力不足造成跳齿；处理措施：调整链条张力并检查链轮；停机时长：36分钟\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-105-1",
+        "equipment": "分拣机",
+        "production_line": "5号产线",
+        "reported_at": "2025-02-10",
+        "fault_code": null,
+        "category": "mechanical",
+        "symptom": "链条张力不足造成跳齿",
+        "action_taken": "调整链条张力并检查链轮",
+        "downtime_minutes": 36
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0061",
+      "text": "现场维修记录\n设备编号：EQ-205-1；设备：分拣机；产线：5号产线；报告日期：2025-05-01；故障码：无故障码；类别：电气；现象：编码器电缆屏蔽层破损导致信号干扰；处理措施：更换编码器电缆并恢复屏蔽接地；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-205-1",
+        "equipment": "分拣机",
+        "production_line": "5号产线",
+        "reported_at": "2025-05-01",
+        "fault_code": null,
+        "category": "electrical",
+        "symptom": "编码器电缆屏蔽层破损导致信号干扰",
+        "action_taken": "更换编码器电缆并恢复屏蔽接地",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0101",
+      "text": "现场维修记录\n设备编号：EQ-305-1；设备：分拣机；产线：5号产线；报告日期：2025-07-20；故障码：无故障码；类别：软件；现象：网络配置变更后无法连接调度服务；处理措施：修正网络配置并验证服务连接；停机时长：42分钟\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-305-1",
+        "equipment": "分拣机",
+        "production_line": "5号产线",
+        "reported_at": "2025-07-20",
+        "fault_code": null,
+        "category": "software",
+        "symptom": "网络配置变更后无法连接调度服务",
+        "action_taken": "修正网络配置并验证服务连接",
+        "downtime_minutes": 42
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0141",
+      "text": "现场维修记录\n设备编号：未记录；设备：分拣机；产线：5号产线；报告日期：2025-10-08；故障码：无故障码；类别：其他；现象：周转箱标签与物料清单不一致；处理措施：核对物料清单并更新周转箱标签；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "分拣机",
+        "production_line": "5号产线",
+        "reported_at": "2025-10-08",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "周转箱标签与物料清单不一致",
+        "action_taken": "核对物料清单并更新周转箱标签",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0022",
+      "text": "班组报修单\n故障码: E105\n现象: 链条张力不足造成跳齿\n处理措施: 调整链条张力并检查链轮\n停机时长: 47分钟\n设备: 分拣机\n产线: 6号产线\n报告日期: 2025-02-12\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "分拣机",
+        "production_line": "6号产线",
+        "reported_at": "2025-02-12",
+        "fault_code": "E105",
+        "category": "mechanical",
+        "symptom": "链条张力不足造成跳齿",
+        "action_taken": "调整链条张力并检查链轮",
+        "downtime_minutes": 47
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0062",
+      "text": "班组报修单\n报告日期: 2025-05-03\n故障码: E205\n现象: 编码器电缆屏蔽层破损导致信号干扰\n处理措施: 更换编码器电缆并恢复屏蔽接地\n停机时长: 50分钟\n设备编号: EQ-205-2\n设备: 分拣机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-205-2",
+        "equipment": "分拣机",
+        "production_line": "6号产线",
+        "reported_at": "2025-05-03",
+        "fault_code": "E205",
+        "category": "electrical",
+        "symptom": "编码器电缆屏蔽层破损导致信号干扰",
+        "action_taken": "更换编码器电缆并恢复屏蔽接地",
+        "downtime_minutes": 50
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0102",
+      "text": "班组报修单\n报告日期: 2025-07-22\n故障码: E305\n现象: 网络配置变更后无法连接调度服务\n处理措施: 修正网络配置并验证服务连接\n停机时长: 53分钟\n设备编号: EQ-305-2\n设备: 分拣机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-305-2",
+        "equipment": "分拣机",
+        "production_line": "6号产线",
+        "reported_at": "2025-07-22",
+        "fault_code": "E305",
+        "category": "software",
+        "symptom": "网络配置变更后无法连接调度服务",
+        "action_taken": "修正网络配置并验证服务连接",
+        "downtime_minutes": 53
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0142",
+      "text": "班组报修单\n报告日期: 2025-10-10\n现象: 周转箱标签与物料清单不一致\n处理措施: 核对物料清单并更新周转箱标签\n停机时长: 未停机\n设备编号: EQ-405-2\n设备: 分拣机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-405-2",
+        "equipment": "分拣机",
+        "production_line": "6号产线",
+        "reported_at": "2025-10-10",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "周转箱标签与物料清单不一致",
+        "action_taken": "核对物料清单并更新周转箱标签",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0023",
+      "text": "设备巡查记录\n设备编号=EQ-105-3 | 设备=分拣机 | 产线=未记录 | 报告日期=2025年2月14日 | 故障码=E105 | 现象=链条张力不足造成跳齿 | 处理措施=调整链条张力并检查链轮 | 停机时长=58分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-105-3",
+        "equipment": "分拣机",
+        "production_line": null,
+        "reported_at": "2025-02-14",
+        "fault_code": "E105",
+        "category": "mechanical",
+        "symptom": "链条张力不足造成跳齿",
+        "action_taken": "调整链条张力并检查链轮",
+        "downtime_minutes": 58
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0063",
+      "text": "设备巡查记录\n设备编号=EQ-205-3 | 设备=分拣机 | 产线=7号产线 | 报告日期=2025年5月5日 | 故障码=E205 | 现象=编码器电缆屏蔽层破损导致信号干扰 | 处理措施=更换编码器电缆并恢复屏蔽接地 | 停机时长=61分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-205-3",
+        "equipment": "分拣机",
+        "production_line": "7号产线",
+        "reported_at": "2025-05-05",
+        "fault_code": "E205",
+        "category": "electrical",
+        "symptom": "编码器电缆屏蔽层破损导致信号干扰",
+        "action_taken": "更换编码器电缆并恢复屏蔽接地",
+        "downtime_minutes": 61
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0103",
+      "text": "设备巡查记录\n设备编号=EQ-305-3 | 设备=分拣机 | 产线=7号产线 | 报告日期=2025年7月24日 | 故障码=E305 | 现象=网络配置变更后无法连接调度服务 | 处理措施=修正网络配置并验证服务连接\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-305-3",
+        "equipment": "分拣机",
+        "production_line": "7号产线",
+        "reported_at": "2025-07-24",
+        "fault_code": "E305",
+        "category": "software",
+        "symptom": "网络配置变更后无法连接调度服务",
+        "action_taken": "修正网络配置并验证服务连接",
+        "downtime_minutes": null
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0143",
+      "text": "设备巡查记录\n设备编号=EQ-405-3 | 设备=分拣机 | 产线=7号产线 | 报告日期=2025年10月12日 | 故障码=无故障码 | 现象=周转箱标签与物料清单不一致 | 处理措施=核对物料清单并更新周转箱标签 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-405-3",
+        "equipment": "分拣机",
+        "production_line": "7号产线",
+        "reported_at": "2025-10-12",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "周转箱标签与物料清单不一致",
+        "action_taken": "核对物料清单并更新周转箱标签",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0024",
+      "text": "工单补充记录\n停机时长：4分钟。处理措施：调整链条张力并检查链轮。现象：链条张力不足造成跳齿。故障码：E105。报告日期：2025-02-16。产线：8号产线。设备：分拣机。设备编号：EQ-105-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-105-4",
+        "equipment": "分拣机",
+        "production_line": "8号产线",
+        "reported_at": "2025-02-16",
+        "fault_code": "E105",
+        "category": "mechanical",
+        "symptom": "链条张力不足造成跳齿",
+        "action_taken": "调整链条张力并检查链轮",
+        "downtime_minutes": 4
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0064",
+      "text": "工单补充记录\n停机时长：7分钟。处理措施：未记录。现象：编码器电缆屏蔽层破损导致信号干扰。故障码：E205。报告日期：2025-05-07。产线：8号产线。设备：分拣机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "分拣机",
+        "production_line": "8号产线",
+        "reported_at": "2025-05-07",
+        "fault_code": "E205",
+        "category": "electrical",
+        "symptom": "编码器电缆屏蔽层破损导致信号干扰",
+        "action_taken": null,
+        "downtime_minutes": 7
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0104",
+      "text": "工单补充记录\n停机时长：10分钟。处理措施：修正网络配置并验证服务连接。现象：网络配置变更后无法连接调度服务。故障码：E305。报告日期：2025-07-26。产线：8号产线。设备：分拣机。设备编号：EQ-305-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-305-4",
+        "equipment": "分拣机",
+        "production_line": "8号产线",
+        "reported_at": "2025-07-26",
+        "fault_code": "E305",
+        "category": "software",
+        "symptom": "网络配置变更后无法连接调度服务",
+        "action_taken": "修正网络配置并验证服务连接",
+        "downtime_minutes": 10
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0144",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：核对物料清单并更新周转箱标签。现象：周转箱标签与物料清单不一致。设备：分拣机。设备编号：EQ-405-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-405-4",
+        "equipment": "分拣机",
+        "production_line": null,
+        "reported_at": null,
+        "fault_code": null,
+        "category": "other",
+        "symptom": "周转箱标签与物料清单不一致",
+        "action_taken": "核对物料清单并更新周转箱标签",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0025",
+      "text": "现场维修记录\n设备编号：EQ-106-1；设备：送料机；产线：1号产线；报告日期：2025-02-18；故障码：E106；类别：机械；现象：滑轨积尘造成滑块运动卡滞；处理措施：清理滑轨并补充润滑油；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-106-1",
+        "equipment": "送料机",
+        "production_line": "1号产线",
+        "reported_at": "2025-02-18",
+        "fault_code": "E106",
+        "category": "mechanical",
+        "symptom": "滑轨积尘造成滑块运动卡滞",
+        "action_taken": "清理滑轨并补充润滑油",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0065",
+      "text": "现场维修记录\n设备编号：EQ-206-1；设备：送料机；产线：1号产线；报告日期：2025-05-09；故障码：E206；类别：电气；现象：接近开关损坏导致到位信号缺失；处理措施：更换接近开关并调整检测距离；停机时长：46分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-206-1",
+        "equipment": "送料机",
+        "production_line": "1号产线",
+        "reported_at": "2025-05-09",
+        "fault_code": "E206",
+        "category": "electrical",
+        "symptom": "接近开关损坏导致到位信号缺失",
+        "action_taken": "更换接近开关并调整检测距离",
+        "downtime_minutes": 46
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0105",
+      "text": "现场维修记录\n设备编号：EQ-306-1；设备：送料机；产线：1号产线；故障码：E306；类别：软件；现象：控制程序版本不一致导致任务拒绝；处理措施：统一程序版本并重新下发任务；停机时长：49分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-306-1",
+        "equipment": "送料机",
+        "production_line": "1号产线",
+        "reported_at": null,
+        "fault_code": "E306",
+        "category": "software",
+        "symptom": "控制程序版本不一致导致任务拒绝",
+        "action_taken": "统一程序版本并重新下发任务",
+        "downtime_minutes": 49
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0145",
+      "text": "现场维修记录\n设备编号：EQ-406-1；设备：送料机；产线：1号产线；报告日期：2025-10-16；故障码：无故障码；类别：其他；现象：待加工物料尚未送达工位；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-406-1",
+        "equipment": "送料机",
+        "production_line": "1号产线",
+        "reported_at": "2025-10-16",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "待加工物料尚未送达工位",
+        "action_taken": null,
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0026",
+      "text": "班组报修单\n报告日期: 2025-02-20\n现象: 滑轨积尘造成滑块运动卡滞\n处理措施: 清理滑轨并补充润滑油\n停机时长: 54分钟\n设备编号: EQ-106-2\n设备: 送料机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-106-2",
+        "equipment": "送料机",
+        "production_line": "2号产线",
+        "reported_at": "2025-02-20",
+        "fault_code": null,
+        "category": "mechanical",
+        "symptom": "滑轨积尘造成滑块运动卡滞",
+        "action_taken": "清理滑轨并补充润滑油",
+        "downtime_minutes": 54
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0066",
+      "text": "班组报修单\n报告日期: 未记录\n现象: 接近开关损坏导致到位信号缺失\n处理措施: 更换接近开关并调整检测距离\n停机时长: 57分钟\n设备编号: EQ-206-2\n设备: 送料机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-206-2",
+        "equipment": "送料机",
+        "production_line": "2号产线",
+        "reported_at": null,
+        "fault_code": null,
+        "category": "electrical",
+        "symptom": "接近开关损坏导致到位信号缺失",
+        "action_taken": "更换接近开关并调整检测距离",
+        "downtime_minutes": 57
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0106",
+      "text": "班组报修单\n故障码: 无故障码\n现象: 控制程序版本不一致导致任务拒绝\n处理措施: 统一程序版本并重新下发任务\n停机时长: 60分钟\n设备: 送料机\n产线: 2号产线\n报告日期: 2025-07-30\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "送料机",
+        "production_line": "2号产线",
+        "reported_at": "2025-07-30",
+        "fault_code": null,
+        "category": "software",
+        "symptom": "控制程序版本不一致导致任务拒绝",
+        "action_taken": "统一程序版本并重新下发任务",
+        "downtime_minutes": 60
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0146",
+      "text": "班组报修单\n报告日期: 2025-10-18\n现象: 待加工物料尚未送达工位\n处理措施: 登记缺料并协调补充物料\n停机时长: 未停机\n设备编号: EQ-406-2\n设备: 送料机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-406-2",
+        "equipment": "送料机",
+        "production_line": "2号产线",
+        "reported_at": "2025-10-18",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "待加工物料尚未送达工位",
+        "action_taken": "登记缺料并协调补充物料",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0027",
+      "text": "设备巡查记录\n设备编号=EQ-106-3 | 设备=送料机 | 产线=3号产线 | 故障码=E106 | 现象=滑轨积尘造成滑块运动卡滞 | 处理措施=清理滑轨并补充润滑油 | 停机时长=65分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-106-3",
+        "equipment": "送料机",
+        "production_line": "3号产线",
+        "reported_at": null,
+        "fault_code": "E106",
+        "category": "mechanical",
+        "symptom": "滑轨积尘造成滑块运动卡滞",
+        "action_taken": "清理滑轨并补充润滑油",
+        "downtime_minutes": 65
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0067",
+      "text": "设备巡查记录\n设备编号=EQ-206-3 | 设备=送料机 | 产线=未记录 | 报告日期=2025年5月13日 | 故障码=E206 | 现象=接近开关损坏导致到位信号缺失 | 处理措施=更换接近开关并调整检测距离 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-206-3",
+        "equipment": "送料机",
+        "production_line": null,
+        "reported_at": "2025-05-13",
+        "fault_code": "E206",
+        "category": "electrical",
+        "symptom": "接近开关损坏导致到位信号缺失",
+        "action_taken": "更换接近开关并调整检测距离",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0107",
+      "text": "设备巡查记录\n设备编号=EQ-306-3 | 设备=送料机 | 产线=3号产线 | 报告日期=2025年8月1日 | 故障码=E306 | 现象=控制程序版本不一致导致任务拒绝 | 处理措施=统一程序版本并重新下发任务 | 停机时长=6分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-306-3",
+        "equipment": "送料机",
+        "production_line": "3号产线",
+        "reported_at": "2025-08-01",
+        "fault_code": "E306",
+        "category": "software",
+        "symptom": "控制程序版本不一致导致任务拒绝",
+        "action_taken": "统一程序版本并重新下发任务",
+        "downtime_minutes": 6
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0147",
+      "text": "设备巡查记录\n设备编号=EQ-406-3 | 设备=送料机 | 产线=3号产线 | 报告日期=2025年10月20日 | 故障码=无故障码 | 现象=待加工物料尚未送达工位 | 处理措施=登记缺料并协调补充物料 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-406-3",
+        "equipment": "送料机",
+        "production_line": "3号产线",
+        "reported_at": "2025-10-20",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "待加工物料尚未送达工位",
+        "action_taken": "登记缺料并协调补充物料",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0028",
+      "text": "工单补充记录\n停机时长：11分钟。现象：滑轨积尘造成滑块运动卡滞。故障码：E106。报告日期：2025-02-24。产线：4号产线。设备：送料机。设备编号：EQ-106-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-106-4",
+        "equipment": "送料机",
+        "production_line": "4号产线",
+        "reported_at": "2025-02-24",
+        "fault_code": "E106",
+        "category": "mechanical",
+        "symptom": "滑轨积尘造成滑块运动卡滞",
+        "action_taken": null,
+        "downtime_minutes": 11
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0068",
+      "text": "工单补充记录\n停机时长：14分钟。处理措施：更换接近开关并调整检测距离。现象：接近开关损坏导致到位信号缺失。故障码：E206。报告日期：2025-05-15。产线：4号产线。设备：送料机。设备编号：EQ-206-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-206-4",
+        "equipment": "送料机",
+        "production_line": "4号产线",
+        "reported_at": "2025-05-15",
+        "fault_code": "E206",
+        "category": "electrical",
+        "symptom": "接近开关损坏导致到位信号缺失",
+        "action_taken": "更换接近开关并调整检测距离",
+        "downtime_minutes": 14
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0108",
+      "text": "工单补充记录\n停机时长：17分钟。处理措施：统一程序版本并重新下发任务。现象：控制程序版本不一致导致任务拒绝。故障码：E306。报告日期：2025-08-03。产线：4号产线。设备：送料机。设备编号：EQ-306-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-306-4",
+        "equipment": "送料机",
+        "production_line": "4号产线",
+        "reported_at": "2025-08-03",
+        "fault_code": "E306",
+        "category": "software",
+        "symptom": "控制程序版本不一致导致任务拒绝",
+        "action_taken": "统一程序版本并重新下发任务",
+        "downtime_minutes": 17
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0148",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：登记缺料并协调补充物料。现象：待加工物料尚未送达工位。故障码：无故障码。报告日期：2025-10-22。产线：4号产线。设备：送料机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "送料机",
+        "production_line": "4号产线",
+        "reported_at": "2025-10-22",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "待加工物料尚未送达工位",
+        "action_taken": "登记缺料并协调补充物料",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0029",
+      "text": "现场维修记录\n设备编号：未记录；设备：搅拌机；产线：5号产线；报告日期：2025-02-26；故障码：E107；类别：机械；现象：联轴器连接螺栓松动；处理措施：按维护规程紧固连接螺栓；停机时长：50分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "搅拌机",
+        "production_line": "5号产线",
+        "reported_at": "2025-02-26",
+        "fault_code": "E107",
+        "category": "mechanical",
+        "symptom": "联轴器连接螺栓松动",
+        "action_taken": "按维护规程紧固连接螺栓",
+        "downtime_minutes": 50
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0069",
+      "text": "现场维修记录\n设备编号：EQ-207-1；设备：搅拌机；产线：5号产线；报告日期：2025-05-17；故障码：E207；类别：电气；现象：变频器散热风扇断路；处理措施：更换风扇后测试变频器温升；停机时长：未记录\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-207-1",
+        "equipment": "搅拌机",
+        "production_line": "5号产线",
+        "reported_at": "2025-05-17",
+        "fault_code": "E207",
+        "category": "electrical",
+        "symptom": "变频器散热风扇断路",
+        "action_taken": "更换风扇后测试变频器温升",
+        "downtime_minutes": null
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0109",
+      "text": "现场维修记录\n设备编号：EQ-307-1；设备：搅拌机；产线：5号产线；报告日期：2025-08-05；故障码：E307；类别：软件；现象：监控软件日志目录已满；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-307-1",
+        "equipment": "搅拌机",
+        "production_line": "5号产线",
+        "reported_at": "2025-08-05",
+        "fault_code": "E307",
+        "category": "software",
+        "symptom": "监控软件日志目录已满",
+        "action_taken": null,
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0149",
+      "text": "现场维修记录\n设备编号：EQ-407-1；设备：搅拌机；产线：5号产线；报告日期：2025-10-24；故障码：无故障码；类别：其他；现象：例行清洁任务到期；处理措施：完成清洁并更新维护记录；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-407-1",
+        "equipment": "搅拌机",
+        "production_line": "5号产线",
+        "reported_at": "2025-10-24",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "例行清洁任务到期",
+        "action_taken": "完成清洁并更新维护记录",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0030",
+      "text": "班组报修单\n报告日期: 2025-02-28\n故障码: E107\n现象: 联轴器连接螺栓松动\n处理措施: 按维护规程紧固连接螺栓\n停机时长: 61分钟\n设备编号: EQ-107-2\n设备: 搅拌机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-107-2",
+        "equipment": "搅拌机",
+        "production_line": "6号产线",
+        "reported_at": "2025-02-28",
+        "fault_code": "E107",
+        "category": "mechanical",
+        "symptom": "联轴器连接螺栓松动",
+        "action_taken": "按维护规程紧固连接螺栓",
+        "downtime_minutes": 61
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0070",
+      "text": "班组报修单\n报告日期: 2025-05-19\n故障码: E207\n现象: 变频器散热风扇断路\n处理措施: 更换风扇后测试变频器温升\n停机时长: 64分钟\n设备编号: EQ-207-2\n设备: 搅拌机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-207-2",
+        "equipment": "搅拌机",
+        "production_line": "6号产线",
+        "reported_at": "2025-05-19",
+        "fault_code": "E207",
+        "category": "electrical",
+        "symptom": "变频器散热风扇断路",
+        "action_taken": "更换风扇后测试变频器温升",
+        "downtime_minutes": 64
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0110",
+      "text": "班组报修单\n报告日期: 2025-08-07\n故障码: E307\n现象: 监控软件日志目录已满\n处理措施: 归档历史日志并调整保留配置\n停机时长: 2分钟\n设备编号: EQ-307-2\n设备: 搅拌机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-307-2",
+        "equipment": "搅拌机",
+        "production_line": "6号产线",
+        "reported_at": "2025-08-07",
+        "fault_code": "E307",
+        "category": "software",
+        "symptom": "监控软件日志目录已满",
+        "action_taken": "归档历史日志并调整保留配置",
+        "downtime_minutes": 2
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0150",
+      "text": "班组报修单\n报告日期: 2025-10-26\n现象: 例行清洁任务到期\n处理措施: 完成清洁并更新维护记录\n停机时长: 未停机\n设备编号: EQ-407-2\n设备: 搅拌机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-407-2",
+        "equipment": "搅拌机",
+        "production_line": "6号产线",
+        "reported_at": "2025-10-26",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "例行清洁任务到期",
+        "action_taken": "完成清洁并更新维护记录",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0031",
+      "text": "设备巡查记录\n设备编号=EQ-107-3 | 设备=搅拌机 | 产线=7号产线 | 报告日期=2025年3月2日 | 故障码=无故障码 | 现象=联轴器连接螺栓松动 | 处理措施=按维护规程紧固连接螺栓 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-107-3",
+        "equipment": "搅拌机",
+        "production_line": "7号产线",
+        "reported_at": "2025-03-02",
+        "fault_code": null,
+        "category": "mechanical",
+        "symptom": "联轴器连接螺栓松动",
+        "action_taken": "按维护规程紧固连接螺栓",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0071",
+      "text": "设备巡查记录\n设备编号=未记录 | 设备=搅拌机 | 产线=7号产线 | 报告日期=2025年5月21日 | 故障码=无故障码 | 现象=变频器散热风扇断路 | 处理措施=更换风扇后测试变频器温升 | 停机时长=10分钟\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "搅拌机",
+        "production_line": "7号产线",
+        "reported_at": "2025-05-21",
+        "fault_code": null,
+        "category": "electrical",
+        "symptom": "变频器散热风扇断路",
+        "action_taken": "更换风扇后测试变频器温升",
+        "downtime_minutes": 10
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0111",
+      "text": "设备巡查记录\n设备编号=EQ-307-3 | 设备=搅拌机 | 产线=未记录 | 报告日期=2025年8月9日 | 故障码=无故障码 | 现象=监控软件日志目录已满 | 处理措施=归档历史日志并调整保留配置 | 停机时长=13分钟\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-307-3",
+        "equipment": "搅拌机",
+        "production_line": null,
+        "reported_at": "2025-08-09",
+        "fault_code": null,
+        "category": "software",
+        "symptom": "监控软件日志目录已满",
+        "action_taken": "归档历史日志并调整保留配置",
+        "downtime_minutes": 13
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0151",
+      "text": "设备巡查记录\n设备编号=EQ-407-3 | 设备=搅拌机 | 产线=7号产线 | 报告日期=2025年10月28日 | 故障码=无故障码 | 现象=例行清洁任务到期 | 处理措施=完成清洁并更新维护记录 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。本记录未确认任何其他故障原因。",
+      "expected": {
+        "equipment_id": "EQ-407-3",
+        "equipment": "搅拌机",
+        "production_line": "7号产线",
+        "reported_at": "2025-10-28",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "例行清洁任务到期",
+        "action_taken": "完成清洁并更新维护记录",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0032",
+      "text": "工单补充记录\n停机时长：18分钟。处理措施：按维护规程紧固连接螺栓。现象：联轴器连接螺栓松动。故障码：E107。报告日期：2025-03-04。产线：8号产线。设备：搅拌机。设备编号：EQ-107-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-107-4",
+        "equipment": "搅拌机",
+        "production_line": "8号产线",
+        "reported_at": "2025-03-04",
+        "fault_code": "E107",
+        "category": "mechanical",
+        "symptom": "联轴器连接螺栓松动",
+        "action_taken": "按维护规程紧固连接螺栓",
+        "downtime_minutes": 18
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0072",
+      "text": "工单补充记录\n停机时长：21分钟。处理措施：更换风扇后测试变频器温升。现象：变频器散热风扇断路。故障码：E207。报告日期：2025-05-23。产线：8号产线。设备：搅拌机。设备编号：EQ-207-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-207-4",
+        "equipment": "搅拌机",
+        "production_line": "8号产线",
+        "reported_at": "2025-05-23",
+        "fault_code": "E207",
+        "category": "electrical",
+        "symptom": "变频器散热风扇断路",
+        "action_taken": "更换风扇后测试变频器温升",
+        "downtime_minutes": 21
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0112",
+      "text": "工单补充记录\n停机时长：24分钟。处理措施：归档历史日志并调整保留配置。现象：监控软件日志目录已满。故障码：E307。报告日期：2025-08-11。产线：8号产线。设备：搅拌机。设备编号：EQ-307-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-307-4",
+        "equipment": "搅拌机",
+        "production_line": "8号产线",
+        "reported_at": "2025-08-11",
+        "fault_code": "E307",
+        "category": "software",
+        "symptom": "监控软件日志目录已满",
+        "action_taken": "归档历史日志并调整保留配置",
+        "downtime_minutes": 24
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0152",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：完成清洁并更新维护记录。现象：例行清洁任务到期。报告日期：2025-10-30。产线：8号产线。设备：搅拌机。设备编号：EQ-407-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-407-4",
+        "equipment": "搅拌机",
+        "production_line": "8号产线",
+        "reported_at": "2025-10-30",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "例行清洁任务到期",
+        "action_taken": "完成清洁并更新维护记录",
+        "downtime_minutes": 0
+      },
+      "split": "dev"
+    },
+    {
+      "id": "SYN-0033",
+      "text": "现场维修记录\n设备编号：EQ-108-1；设备：空压机；产线：1号产线；报告日期：2025-03-06；故障码：E108；类别：机械；现象：排气管接头密封不良出现泄漏；处理措施：更换接头密封垫并复查泄漏；停机时长：57分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-108-1",
+        "equipment": "空压机",
+        "production_line": "1号产线",
+        "reported_at": "2025-03-06",
+        "fault_code": "E108",
+        "category": "mechanical",
+        "symptom": "排气管接头密封不良出现泄漏",
+        "action_taken": "更换接头密封垫并复查泄漏",
+        "downtime_minutes": 57
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0073",
+      "text": "现场维修记录\n设备编号：EQ-208-1；设备：空压机；产线：1号产线；报告日期：2025-05-25；故障码：E208；类别：电气；现象：温度传感器接线松脱；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-208-1",
+        "equipment": "空压机",
+        "production_line": "1号产线",
+        "reported_at": "2025-05-25",
+        "fault_code": "E208",
+        "category": "electrical",
+        "symptom": "温度传感器接线松脱",
+        "action_taken": null,
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0113",
+      "text": "现场维修记录\n设备编号：未记录；设备：空压机；产线：1号产线；报告日期：2025-08-13；故障码：E308；类别：软件；现象：固件升级后时间配置丢失；处理措施：恢复时间配置并验证重启行为；停机时长：63分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "空压机",
+        "production_line": "1号产线",
+        "reported_at": "2025-08-13",
+        "fault_code": "E308",
+        "category": "software",
+        "symptom": "固件升级后时间配置丢失",
+        "action_taken": "恢复时间配置并验证重启行为",
+        "downtime_minutes": 63
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0153",
+      "text": "现场维修记录\n设备编号：EQ-408-1；设备：空压机；产线：1号产线；报告日期：2025-11-01；故障码：无故障码；类别：其他；现象：例行巡检未发现异常；处理措施：记录巡检结果并保持运行；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-408-1",
+        "equipment": "空压机",
+        "production_line": "1号产线",
+        "reported_at": "2025-11-01",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "例行巡检未发现异常",
+        "action_taken": "记录巡检结果并保持运行",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0034",
+      "text": "班组报修单\n故障码: E108\n现象: 排气管接头密封不良出现泄漏\n处理措施: 更换接头密封垫并复查泄漏\n停机时长: 3分钟\n设备编号: EQ-108-2\n设备: 空压机\n报告日期: 2025-03-08\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-108-2",
+        "equipment": "空压机",
+        "production_line": null,
+        "reported_at": "2025-03-08",
+        "fault_code": "E108",
+        "category": "mechanical",
+        "symptom": "排气管接头密封不良出现泄漏",
+        "action_taken": "更换接头密封垫并复查泄漏",
+        "downtime_minutes": 3
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0074",
+      "text": "班组报修单\n报告日期: 2025-05-27\n故障码: E208\n现象: 温度传感器接线松脱\n处理措施: 重新连接温度传感器并校验读数\n停机时长: 6分钟\n设备编号: EQ-208-2\n设备: 空压机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-208-2",
+        "equipment": "空压机",
+        "production_line": "2号产线",
+        "reported_at": "2025-05-27",
+        "fault_code": "E208",
+        "category": "electrical",
+        "symptom": "温度传感器接线松脱",
+        "action_taken": "重新连接温度传感器并校验读数",
+        "downtime_minutes": 6
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0114",
+      "text": "班组报修单\n报告日期: 2025-08-15\n故障码: E308\n现象: 固件升级后时间配置丢失\n处理措施: 恢复时间配置并验证重启行为\n停机时长: 9分钟\n设备编号: EQ-308-2\n设备: 空压机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-308-2",
+        "equipment": "空压机",
+        "production_line": "2号产线",
+        "reported_at": "2025-08-15",
+        "fault_code": "E308",
+        "category": "software",
+        "symptom": "固件升级后时间配置丢失",
+        "action_taken": "恢复时间配置并验证重启行为",
+        "downtime_minutes": 9
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0154",
+      "text": "班组报修单\n报告日期: 2025-11-03\n现象: 例行巡检未发现异常\n处理措施: 未记录\n设备编号: EQ-408-2\n设备: 空压机\n产线: 2号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-408-2",
+        "equipment": "空压机",
+        "production_line": "2号产线",
+        "reported_at": "2025-11-03",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "例行巡检未发现异常",
+        "action_taken": null,
+        "downtime_minutes": null
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0035",
+      "text": "设备巡查记录\n设备编号=EQ-108-3 | 设备=空压机 | 产线=3号产线 | 报告日期=2025年3月10日 | 故障码=E108 | 现象=排气管接头密封不良出现泄漏 | 处理措施=更换接头密封垫并复查泄漏\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-108-3",
+        "equipment": "空压机",
+        "production_line": "3号产线",
+        "reported_at": "2025-03-10",
+        "fault_code": "E108",
+        "category": "mechanical",
+        "symptom": "排气管接头密封不良出现泄漏",
+        "action_taken": "更换接头密封垫并复查泄漏",
+        "downtime_minutes": null
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0075",
+      "text": "设备巡查记录\n设备编号=EQ-208-3 | 设备=空压机 | 产线=3号产线 | 报告日期=2025年5月29日 | 故障码=E208 | 现象=温度传感器接线松脱 | 处理措施=重新连接温度传感器并校验读数 | 停机时长=17分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-208-3",
+        "equipment": "空压机",
+        "production_line": "3号产线",
+        "reported_at": "2025-05-29",
+        "fault_code": "E208",
+        "category": "electrical",
+        "symptom": "温度传感器接线松脱",
+        "action_taken": "重新连接温度传感器并校验读数",
+        "downtime_minutes": 17
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0115",
+      "text": "设备巡查记录\n设备编号=EQ-308-3 | 设备=空压机 | 产线=3号产线 | 报告日期=2025年8月17日 | 故障码=E308 | 现象=固件升级后时间配置丢失 | 处理措施=恢复时间配置并验证重启行为 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-308-3",
+        "equipment": "空压机",
+        "production_line": "3号产线",
+        "reported_at": "2025-08-17",
+        "fault_code": "E308",
+        "category": "software",
+        "symptom": "固件升级后时间配置丢失",
+        "action_taken": "恢复时间配置并验证重启行为",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0155",
+      "text": "设备巡查记录\n设备编号=未记录 | 设备=空压机 | 产线=未记录 | 报告日期=2025年11月5日 | 故障码=无故障码 | 现象=例行巡检未发现异常 | 处理措施=记录巡检结果并保持运行 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "空压机",
+        "production_line": null,
+        "reported_at": "2025-11-05",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "例行巡检未发现异常",
+        "action_taken": "记录巡检结果并保持运行",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0036",
+      "text": "工单补充记录\n停机时长：25分钟。处理措施：更换接头密封垫并复查泄漏。现象：排气管接头密封不良出现泄漏。故障码：无故障码。报告日期：2025-03-12。产线：4号产线。设备：空压机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "空压机",
+        "production_line": "4号产线",
+        "reported_at": "2025-03-12",
+        "fault_code": null,
+        "category": "mechanical",
+        "symptom": "排气管接头密封不良出现泄漏",
+        "action_taken": "更换接头密封垫并复查泄漏",
+        "downtime_minutes": 25
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0076",
+      "text": "工单补充记录\n停机时长：28分钟。处理措施：重新连接温度传感器并校验读数。现象：温度传感器接线松脱。报告日期：2025-05-31。产线：4号产线。设备：空压机。设备编号：EQ-208-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-208-4",
+        "equipment": "空压机",
+        "production_line": "4号产线",
+        "reported_at": "2025-05-31",
+        "fault_code": null,
+        "category": "electrical",
+        "symptom": "温度传感器接线松脱",
+        "action_taken": "重新连接温度传感器并校验读数",
+        "downtime_minutes": 28
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0116",
+      "text": "工单补充记录\n停机时长：31分钟。处理措施：恢复时间配置并验证重启行为。现象：固件升级后时间配置丢失。报告日期：2025-08-19。产线：4号产线。设备：空压机。设备编号：EQ-308-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-308-4",
+        "equipment": "空压机",
+        "production_line": "4号产线",
+        "reported_at": "2025-08-19",
+        "fault_code": null,
+        "category": "software",
+        "symptom": "固件升级后时间配置丢失",
+        "action_taken": "恢复时间配置并验证重启行为",
+        "downtime_minutes": 31
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0156",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：记录巡检结果并保持运行。现象：例行巡检未发现异常。报告日期：2025-11-07。产线：4号产线。设备：空压机。设备编号：EQ-408-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-408-4",
+        "equipment": "空压机",
+        "production_line": "4号产线",
+        "reported_at": "2025-11-07",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "例行巡检未发现异常",
+        "action_taken": "记录巡检结果并保持运行",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0037",
+      "text": "现场维修记录\n设备编号：EQ-109-1；设备：切割机；产线：5号产线；报告日期：2025-03-14；故障码：E109；类别：机械；现象：刀具磨损导致切口出现毛刺；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-109-1",
+        "equipment": "切割机",
+        "production_line": "5号产线",
+        "reported_at": "2025-03-14",
+        "fault_code": "E109",
+        "category": "mechanical",
+        "symptom": "刀具磨损导致切口出现毛刺",
+        "action_taken": null,
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0077",
+      "text": "现场维修记录\n设备编号：EQ-209-1；设备：切割机；产线：5号产线；报告日期：2025-06-02；故障码：E209；类别：电气；现象：控制柜继电器线圈烧毁；处理措施：更换继电器并检查供电回路；停机时长：2分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-209-1",
+        "equipment": "切割机",
+        "production_line": "5号产线",
+        "reported_at": "2025-06-02",
+        "fault_code": "E209",
+        "category": "electrical",
+        "symptom": "控制柜继电器线圈烧毁",
+        "action_taken": "更换继电器并检查供电回路",
+        "downtime_minutes": 2
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0117",
+      "text": "现场维修记录\n设备编号：EQ-309-1；设备：切割机；产线：5号产线；报告日期：2025-08-21；故障码：E309；类别：软件；现象：排程接口返回重复任务编号；处理措施：修正接口去重逻辑并重放测试任务；停机时长：5分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-309-1",
+        "equipment": "切割机",
+        "production_line": "5号产线",
+        "reported_at": "2025-08-21",
+        "fault_code": "E309",
+        "category": "software",
+        "symptom": "排程接口返回重复任务编号",
+        "action_taken": "修正接口去重逻辑并重放测试任务",
+        "downtime_minutes": 5
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0157",
+      "text": "现场维修记录\n设备编号：EQ-409-1；设备：切割机；产线：5号产线；类别：其他；现象：成品收集箱已满需要周转；处理措施：更换空收集箱并登记周转数量；停机时长：未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-409-1",
+        "equipment": "切割机",
+        "production_line": "5号产线",
+        "reported_at": null,
+        "fault_code": null,
+        "category": "other",
+        "symptom": "成品收集箱已满需要周转",
+        "action_taken": "更换空收集箱并登记周转数量",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0038",
+      "text": "班组报修单\n报告日期: 2025-03-16\n故障码: E109\n现象: 刀具磨损导致切口出现毛刺\n处理措施: 更换刀具并检查首件切口\n停机时长: 10分钟\n设备编号: EQ-109-2\n设备: 切割机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-109-2",
+        "equipment": "切割机",
+        "production_line": "6号产线",
+        "reported_at": "2025-03-16",
+        "fault_code": "E109",
+        "category": "mechanical",
+        "symptom": "刀具磨损导致切口出现毛刺",
+        "action_taken": "更换刀具并检查首件切口",
+        "downtime_minutes": 10
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0078",
+      "text": "班组报修单\n故障码: E209\n现象: 控制柜继电器线圈烧毁\n处理措施: 更换继电器并检查供电回路\n停机时长: 13分钟\n设备: 切割机\n产线: 未记录\n报告日期: 2025-06-04\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "切割机",
+        "production_line": null,
+        "reported_at": "2025-06-04",
+        "fault_code": "E209",
+        "category": "electrical",
+        "symptom": "控制柜继电器线圈烧毁",
+        "action_taken": "更换继电器并检查供电回路",
+        "downtime_minutes": 13
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0118",
+      "text": "班组报修单\n报告日期: 未记录\n故障码: E309\n现象: 排程接口返回重复任务编号\n停机时长: 16分钟\n设备编号: EQ-309-2\n设备: 切割机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-309-2",
+        "equipment": "切割机",
+        "production_line": "6号产线",
+        "reported_at": null,
+        "fault_code": "E309",
+        "category": "software",
+        "symptom": "排程接口返回重复任务编号",
+        "action_taken": null,
+        "downtime_minutes": 16
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0158",
+      "text": "班组报修单\n报告日期: 2025-11-11\n现象: 成品收集箱已满需要周转\n处理措施: 更换空收集箱并登记周转数量\n停机时长: 未停机\n设备编号: EQ-409-2\n设备: 切割机\n产线: 6号产线\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-409-2",
+        "equipment": "切割机",
+        "production_line": "6号产线",
+        "reported_at": "2025-11-11",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "成品收集箱已满需要周转",
+        "action_taken": "更换空收集箱并登记周转数量",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0039",
+      "text": "设备巡查记录\n设备编号=EQ-109-3 | 设备=切割机 | 产线=7号产线 | 报告日期=2025年3月18日 | 故障码=E109 | 现象=刀具磨损导致切口出现毛刺 | 处理措施=更换刀具并检查首件切口 | 停机时长=21分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-109-3",
+        "equipment": "切割机",
+        "production_line": "7号产线",
+        "reported_at": "2025-03-18",
+        "fault_code": "E109",
+        "category": "mechanical",
+        "symptom": "刀具磨损导致切口出现毛刺",
+        "action_taken": "更换刀具并检查首件切口",
+        "downtime_minutes": 21
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0079",
+      "text": "设备巡查记录\n设备编号=EQ-209-3 | 设备=切割机 | 产线=7号产线 | 故障码=E209 | 现象=控制柜继电器线圈烧毁 | 处理措施=更换继电器并检查供电回路 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-209-3",
+        "equipment": "切割机",
+        "production_line": "7号产线",
+        "reported_at": null,
+        "fault_code": "E209",
+        "category": "electrical",
+        "symptom": "控制柜继电器线圈烧毁",
+        "action_taken": "更换继电器并检查供电回路",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0119",
+      "text": "设备巡查记录\n设备编号=EQ-309-3 | 设备=切割机 | 产线=7号产线 | 报告日期=2025年8月25日 | 故障码=E309 | 现象=排程接口返回重复任务编号 | 处理措施=修正接口去重逻辑并重放测试任务 | 停机时长=27分钟\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-309-3",
+        "equipment": "切割机",
+        "production_line": "7号产线",
+        "reported_at": "2025-08-25",
+        "fault_code": "E309",
+        "category": "software",
+        "symptom": "排程接口返回重复任务编号",
+        "action_taken": "修正接口去重逻辑并重放测试任务",
+        "downtime_minutes": 27
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0159",
+      "text": "设备巡查记录\n设备编号=EQ-409-3 | 设备=切割机 | 产线=7号产线 | 报告日期=2025年11月13日 | 故障码=无故障码 | 现象=成品收集箱已满需要周转 | 处理措施=更换空收集箱并登记周转数量 | 停机时长=未停机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-409-3",
+        "equipment": "切割机",
+        "production_line": "7号产线",
+        "reported_at": "2025-11-13",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "成品收集箱已满需要周转",
+        "action_taken": "更换空收集箱并登记周转数量",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0040",
+      "text": "工单补充记录\n停机时长：32分钟。处理措施：更换刀具并检查首件切口。现象：刀具磨损导致切口出现毛刺。故障码：E109。报告日期：未记录。产线：8号产线。设备：切割机。设备编号：EQ-109-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-109-4",
+        "equipment": "切割机",
+        "production_line": "8号产线",
+        "reported_at": null,
+        "fault_code": "E109",
+        "category": "mechanical",
+        "symptom": "刀具磨损导致切口出现毛刺",
+        "action_taken": "更换刀具并检查首件切口",
+        "downtime_minutes": 32
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0080",
+      "text": "工单补充记录\n停机时长：35分钟。处理措施：更换继电器并检查供电回路。现象：控制柜继电器线圈烧毁。故障码：E209。报告日期：2025-06-08。产线：8号产线。设备：切割机。设备编号：EQ-209-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-209-4",
+        "equipment": "切割机",
+        "production_line": "8号产线",
+        "reported_at": "2025-06-08",
+        "fault_code": "E209",
+        "category": "electrical",
+        "symptom": "控制柜继电器线圈烧毁",
+        "action_taken": "更换继电器并检查供电回路",
+        "downtime_minutes": 35
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0120",
+      "text": "工单补充记录\n处理措施：修正接口去重逻辑并重放测试任务。现象：排程接口返回重复任务编号。故障码：E309。报告日期：2025-08-27。产线：8号产线。设备：切割机\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": null,
+        "equipment": "切割机",
+        "production_line": "8号产线",
+        "reported_at": "2025-08-27",
+        "fault_code": "E309",
+        "category": "software",
+        "symptom": "排程接口返回重复任务编号",
+        "action_taken": "修正接口去重逻辑并重放测试任务",
+        "downtime_minutes": null
+      },
+      "split": "test"
+    },
+    {
+      "id": "SYN-0160",
+      "text": "工单补充记录\n停机时长：未停机。处理措施：更换空收集箱并登记周转数量。现象：成品收集箱已满需要周转。报告日期：2025-11-15。产线：8号产线。设备：切割机。设备编号：EQ-409-4\n备注：无需从其他历史工单补全未记录字段。",
+      "expected": {
+        "equipment_id": "EQ-409-4",
+        "equipment": "切割机",
+        "production_line": "8号产线",
+        "reported_at": "2025-11-15",
+        "fault_code": null,
+        "category": "other",
+        "symptom": "成品收集箱已满需要周转",
+        "action_taken": "更换空收集箱并登记周转数量",
+        "downtime_minutes": 0
+      },
+      "split": "test"
+    }
+  ]
+}

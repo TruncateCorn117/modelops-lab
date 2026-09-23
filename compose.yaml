@@ -1,0 +1,20 @@
+services:
+  modelops:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      MODEL_OPS_DB: /app/runtime/modelops.db
+      MODEL_OPS_DATA: /app/data
+      MODEL_OPS_API_KEY: ${MODEL_OPS_API_KEY:-}
+      MODEL_OPS_ALLOWED_HOSTS: ${MODEL_OPS_ALLOWED_HOSTS:-localhost,127.0.0.1,::1,host.docker.internal}
+      # Optional upstream key. Models store this environment variable's name.
+      MODEL_PROVIDER_API_KEY: ${MODEL_PROVIDER_API_KEY:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - modelops-data:/app/runtime
+    restart: unless-stopped
+
+volumes:
+  modelops-data:
